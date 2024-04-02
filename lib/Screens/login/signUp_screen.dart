@@ -1,0 +1,211 @@
+import '../../../../Common/all_import.dart';
+import 'login_screen.dart';
+
+
+
+
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  AppColors appColors = AppColors();
+  MyText myText = MyText();
+
+  @override
+  Widget build(BuildContext context) {
+    ScalingQuery scalingQuery = ResponsiveFlutter.of(context);
+    return SafeArea(
+        top: false,
+        bottom: false,
+        child: Scaffold(
+          backgroundColor: appColors.darkBackgroundColor,
+          body: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: const BoxDecoration(
+              color: AppTheme.darkPrimaryColor,
+              image: DecorationImage(
+                alignment: Alignment.topCenter,
+                image: AssetImage(
+                  ImagePath.signUp,
+                ),
+                fit: BoxFit.contain,
+              ),
+            ),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: scalingQuery.verticalScale(300),
+                    ),
+                    SizedBox(
+                      height: scalingQuery.verticalScale(50),
+                      child: Image.asset(
+                        ImagePath.appLogo,
+                        // height: height * 0.05,
+                      ),
+                    ),
+                    Text(
+                      Strings.pleaseFillTheDetails,
+                      style: myText.regularText(
+                          size: scalingQuery.fontSize(1.5),
+                          color: appColors.white.withOpacity(0.7)),
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(
+                        scalingQuery.moderateScale(25),
+                      ),
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: scalingQuery.scale(300),
+                            height: scalingQuery.verticalScale(190),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                  scalingQuery.moderateScale(15)),
+                              color: appColors.lightBackgroundColor,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: scalingQuery.scale(10),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: scalingQuery.moderateScale(15),
+                                    vertical: scalingQuery.moderateScale(10),
+                                  ),
+                                  child: SizedBox(
+                                    width: scalingQuery.scale(180),
+                                    child: commonTextField(
+                                      color: appColors.white.withOpacity(0.5),
+                                      context: context,
+                                      hintText:  Strings.userName,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: scalingQuery.moderateScale(15),
+                                    vertical: scalingQuery.moderateScale(10),
+                                  ),
+                                  child: SizedBox(
+                                    width: scalingQuery.scale(200),
+                                    child: commonTextField(
+                                      obscureText: true,
+                                      color:
+                                          appColors.white.withOpacity(0.5),
+                                      context: context,
+                                      hintText: Strings.email,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: scalingQuery.moderateScale(15),
+                                    vertical: scalingQuery.moderateScale(10),
+                                  ),
+                                  child: SizedBox(
+                                    width: scalingQuery.scale(190),
+                                    child: commonTextField(
+                                      obscureText: true,
+                                      color:
+                                          appColors.white.withOpacity(0.5),
+                                      context: context,
+                                      hintText: Strings.password,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: scalingQuery.moderateScale(15),
+                                    vertical: scalingQuery.moderateScale(10),
+                                  ),
+                                  child: SizedBox(
+                                    width: scalingQuery.scale(190),
+                                    child: commonTextField(
+                                      obscureText: true,
+                                      color:
+                                          appColors.white.withOpacity(0.5),
+                                      context: context,
+                                      hintText:
+                                          "${Strings.confirm} ${Strings.password}",
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: scalingQuery.scale(10),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            heightFactor: 4,
+                            alignment: const FractionalOffset(0.5, 1.4),
+                            child: commonButton(
+                              context: context,
+                              title: Strings.signUp.toUpperCase(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      color: AppTheme.darkPrimaryColor,
+                      width: scalingQuery.scale(300),
+                      child: Column(
+
+                        children: [
+                          SizedBox(
+                            height: scalingQuery.scale(30),
+                          ),
+                          Text(
+                            Strings.doNotHaveAnAccount,
+                            style: myText.regularText(
+                              size: scalingQuery.fontSize(1.5),
+                              color: appColors.white.withOpacity(0.5),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              customNavigationReplacement(
+                                  context: context,
+                                  widget: const LoginScreen());
+                            },
+                            child: Text(
+                              Strings.login.toUpperCase(),
+                              style: myText.boldText(
+                                  size: scalingQuery.fontSize(2),
+                                  color: appColors.blueTextColor),
+                            ),
+                          ),
+                          SizedBox(
+                            height: scalingQuery.scale(10),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ));
+  }
+}

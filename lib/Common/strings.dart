@@ -122,6 +122,11 @@ class Strings {
   static const String changePassword = "Change Password";
   static const String changeTheme = "Change Theme";
   static const String help = "Help";
+  static const String customer = "Customer";
+  static const String wallet = "Wallet";
+  static const String settings = "Settings";
+  static const String workingHours = "Working Hours";
+
   static const String termsAndCondition = "Terms & Condition";
   static const String privacyPolicy = "Privacy Policy";
   static const String logout = "Logout";
@@ -153,6 +158,8 @@ class Strings {
   static const String search = "Search";
   static const String myServices = "My Services";
   static const String personalDetails = "Personals Details";
+  static const String bankDetails = "Bank Details";
+  static const String cancellationPolicy = "Cancellation Policy";
 
   ///dummy strings
   static const String dummy_1 = "150 Experts";

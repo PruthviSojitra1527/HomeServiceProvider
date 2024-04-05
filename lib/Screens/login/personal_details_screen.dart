@@ -1,5 +1,6 @@
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:home_service/Common/all_import.dart';
+import 'package:home_service/Screens/homePage/Tabs/Account/bank_details.dart';
 import 'package:home_service/Screens/homePage/homepage_screen.dart';
 
 class PersonalDetailsScreen extends StatefulWidget {
@@ -36,18 +37,9 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
 
   TextEditingController serviceAreaController =
       TextEditingController(text: Strings.dummy_6);
-  TextEditingController bankNameController =
-      TextEditingController(text: Strings.dummy_16);
-  TextEditingController acNameController =
-      TextEditingController(text: Strings.dummy_17);
-  TextEditingController acNumberController =
-      TextEditingController(text: Strings.dummy_18);
-  TextEditingController ifscCodeController =
-      TextEditingController(text: Strings.dummy_19);
-  TextEditingController upiController =
-      TextEditingController(text: Strings.dummy_20);
+
   TextEditingController costController =
-  TextEditingController(text: Strings.dummy_11);
+      TextEditingController(text: Strings.dummy_11);
 
   @override
   Widget build(BuildContext context) {
@@ -390,179 +382,13 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                         ),
                       )
                     : activeStep == 1
-                        ? Expanded(
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(
-                                            scalingQuery.moderateScale(5)),
-                                        child: Text(
-                                          Strings.bankName,
-                                          style: myText.regularText(),
-                                        ),
-                                      ),
-                                      customContainer(
-                                        context: context,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(
-                                              scalingQuery.moderateScale(10)),
-                                          child: commonTextField(
-                                              context: context,
-                                              controller: bankNameController,
-                                              color:
-                                                  appColors.darkBlueTextColor),
-                                        ),
-                                        color: appColors.appMediumColor,
-                                        width: scalingQuery.wp(85),
-                                        height: scalingQuery.scale(45),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: scalingQuery.scale(5),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(
-                                            scalingQuery.moderateScale(5)),
-                                        child: Text(
-                                          Strings.acName,
-                                          style: myText.regularText(),
-                                        ),
-                                      ),
-                                      customContainer(
-                                        context: context,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(
-                                              scalingQuery.moderateScale(10)),
-                                          child: commonTextField(
-                                              context: context,
-                                              controller: acNumberController,
-                                              color:
-                                                  appColors.darkBlueTextColor),
-                                        ),
-                                        color: appColors.appMediumColor,
-                                        width: scalingQuery.wp(85),
-                                        height: scalingQuery.scale(45),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: scalingQuery.scale(5),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(
-                                            scalingQuery.moderateScale(5)),
-                                        child: Text(
-                                          Strings.acNumber,
-                                          style: myText.regularText(),
-                                        ),
-                                      ),
-                                      customContainer(
-                                        context: context,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(
-                                              scalingQuery.moderateScale(10)),
-                                          child: commonTextField(
-                                              context: context,
-                                              controller: acNumberController,
-                                              color:
-                                                  appColors.darkBlueTextColor),
-                                        ),
-                                        color: appColors.appMediumColor,
-                                        width: scalingQuery.wp(85),
-                                        height: scalingQuery.scale(45),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: scalingQuery.scale(5),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(
-                                            scalingQuery.moderateScale(5)),
-                                        child: Text(
-                                          Strings.ifscCode,
-                                          style: myText.regularText(),
-                                        ),
-                                      ),
-                                      customContainer(
-                                        context: context,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(
-                                              scalingQuery.moderateScale(10)),
-                                          child: commonTextField(
-                                              context: context,
-                                              controller: ifscCodeController,
-                                              color:
-                                                  appColors.darkBlueTextColor),
-                                        ),
-                                        color: appColors.appMediumColor,
-                                        width: scalingQuery.wp(85),
-                                        height: scalingQuery.scale(45),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: scalingQuery.scale(5),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(
-                                            scalingQuery.moderateScale(5)),
-                                        child: Text(
-                                          Strings.upi,
-                                          style: myText.regularText(),
-                                        ),
-                                      ),
-                                      customContainer(
-                                        context: context,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(
-                                              scalingQuery.moderateScale(10)),
-                                          child: commonTextField(
-                                              context: context,
-                                              controller: upiController,
-                                              color:
-                                                  appColors.darkBlueTextColor),
-                                        ),
-                                        color: appColors.appMediumColor,
-                                        width: scalingQuery.wp(85),
-                                        height: scalingQuery.scale(45),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: scalingQuery.scale(100),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
+                        ? bankDetails(context: context)
                         : activeStep == 2
                             ? Expanded(
                                 child: SingleChildScrollView(
                                   child: Padding(
-                                    padding:  EdgeInsets.all(scalingQuery.moderateScale(8)),
+                                    padding: EdgeInsets.all(
+                                        scalingQuery.moderateScale(8)),
                                     child: ListView.builder(
                                       shrinkWrap: true,
                                       itemCount: dummyItemList.length,
@@ -571,19 +397,23 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                                           elevation: 1,
                                           child: customContainer(
                                               context: context,
-                                    padding: 1,
+                                              padding: 1,
                                               child: Padding(
                                                 padding: EdgeInsets.all(
-                                                    scalingQuery.moderateScale(5)),
+                                                    scalingQuery
+                                                        .moderateScale(5)),
                                                 child: Column(
-                                                  crossAxisAlignment:CrossAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Row(
-                                                      mainAxisAlignment:MainAxisAlignment.start,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Padding(
                                                           padding: EdgeInsets.only(
-                                                             right: scalingQuery
+                                                              right: scalingQuery
                                                                   .moderateScale(
                                                                       15)),
                                                           child: InkWell(
@@ -594,10 +424,14 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                                                               });
                                                             },
                                                             child: Container(
-                                                              width: scalingQuery
-                                                                  .scale(20),
-                                                              height: scalingQuery
-                                                                  .scale(20),
+                                                              width:
+                                                                  scalingQuery
+                                                                      .scale(
+                                                                          20),
+                                                              height:
+                                                                  scalingQuery
+                                                                      .scale(
+                                                                          20),
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: isChecked
@@ -605,11 +439,11 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                                                                         .darkBlueTextColor
                                                                     : appColors
                                                                         .white,
-                                                                borderRadius: BorderRadius
-                                                                    .circular(scalingQuery
-                                                                            .scale(
-                                                                                30) /
-                                                                        2),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            scalingQuery.scale(30) /
+                                                                                2),
                                                                 border: Border.all(
                                                                     color: isChecked
                                                                         ? appColors
@@ -621,15 +455,13 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                                                                   ? Padding(
                                                                       padding: EdgeInsets.all(
                                                                           scalingQuery
-                                                                              .moderateScale(
-                                                                                  5)),
+                                                                              .moderateScale(5)),
                                                                       child: Image
                                                                           .asset(
                                                                         ImagePath
                                                                             .checkMark,
-                                                                        height: scalingQuery
-                                                                            .scale(
-                                                                                15),
+                                                                        height:
+                                                                            scalingQuery.scale(15),
                                                                       ),
                                                                     )
                                                                   : null,
@@ -643,8 +475,8 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                                                               .scale(25),
                                                         ),
                                                         Padding(
-                                                          padding: EdgeInsets.all(
-                                                              scalingQuery
+                                                          padding: EdgeInsets
+                                                              .all(scalingQuery
                                                                   .moderateScale(
                                                                       15)),
                                                           child: Text(
@@ -654,28 +486,37 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                                                                 color: appColors
                                                                     .darkBlueTextColor,
                                                                 size: scalingQuery
-                                                                    .fontSize(2)),
+                                                                    .fontSize(
+                                                                        2)),
                                                           ),
                                                         ),
                                                       ],
                                                     ),
-                                                  isChecked ?   customContainer(
-                                                      context: context,
-                                                      padding: 0,
-
-                                                      child: Padding(
-                                                        padding: EdgeInsets.all(
-                                                            scalingQuery.moderateScale(10)),
-                                                        child: commonTextField(
+                                                    isChecked
+                                                        ? customContainer(
                                                             context: context,
-                                                            controller: experienceController,
-                                                            color:
-                                                            appColors.darkBlueTextColor),
-                                                      ),
-                                                      color: appColors.appMediumColor,
-                                                      width: scalingQuery.wp(95),
-                                                      height: scalingQuery.scale(45),
-                                                    ):Container(),
+                                                            padding: 0,
+                                                            child: Padding(
+                                                              padding: EdgeInsets
+                                                                  .all(scalingQuery
+                                                                      .moderateScale(
+                                                                          10)),
+                                                              child: commonTextField(
+                                                                  context:
+                                                                      context,
+                                                                  controller:
+                                                                      experienceController,
+                                                                  color: appColors
+                                                                      .darkBlueTextColor),
+                                                            ),
+                                                            color: appColors
+                                                                .appMediumColor,
+                                                            width: scalingQuery
+                                                                .wp(95),
+                                                            height: scalingQuery
+                                                                .scale(45),
+                                                          )
+                                                        : Container(),
                                                   ],
                                                 ),
                                               )),

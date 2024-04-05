@@ -1,12 +1,11 @@
 import 'package:home_service/Screens/homePage/Tabs/Account/change_password_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/edit_profile.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/help_screen.dart';
-import 'package:home_service/Screens/homePage/Tabs/Account/notification_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/privacy_policy_screen.dart';
+import 'package:home_service/Screens/homePage/Tabs/Account/settings_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/terms_and_condition_screen.dart';
-
 import '../../../../Common/all_import.dart';
-import '../../../../Utils/custom_switch_button.dart';
+import '../Notification/notification_screen.dart';
 
 class MyAccount extends StatefulWidget {
   const MyAccount({super.key});
@@ -25,82 +24,18 @@ class _MyAccountState extends State<MyAccount> {
     List list = [
       {
         'image': ImagePath.notification,
-        'title': Strings.notificationSettings,
+        'title': Strings.notification,
         'icon': ImagePath.forwardArrow,
         'child': null,
         'onTap': () {
           customNavigation(
-              context: context, widget: const NotificationSettingScreen());
+              context: context, widget: const NotificationScreen());
         },
       },
+
       {
-        'image': ImagePath.changeLanguage,
-        'title': Strings.changeLanguage,
-        'icon': null,
-        'onTap': () {},
-        'child': customContainer(
-            context: context,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: scalingQuery.moderateScale(10)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    selectedItem,
-                    style: myText.semiBoldText(
-                        color: appColors.white, size: scalingQuery.fontSize(2)),
-                  ),
-                  DropdownButton(
-                    padding: EdgeInsets.all(scalingQuery.moderateScale(0)),
-                    dropdownColor: appColors.white,
-                    style: myText.regularText(size: scalingQuery.fontSize(2)),
-                    onChanged: (newValue) {
-                      setState(() {
-                        selectedItem = newValue! as String;
-                      });
-                    },
-                    items: language.map((item) {
-                      return DropdownMenuItem(
-                        value: item,
-                        child: Text(
-                          item,
-                          style: myText.regularText(
-                              color: appColors.darkBlueTextColor),
-                        ),
-                      );
-                    }).toList(),
-                    underline: Container(),
-                    icon: Image.asset(
-                      ImagePath.whiteDropdown,
-                      height: scalingQuery.scale(8),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            color: appColors.yellow),
-      },
-      {
-        'image': ImagePath.changeTheme,
-        'title': Strings.changeTheme,
-        'icon': null,
-        'onTap': () {},
-        'child': Padding(
-          padding: EdgeInsets.all(scalingQuery.moderateScale(17)),
-          child: CustomSwitch(
-            value: switchValue,
-            onChanged: (value) {
-              setState(() {
-                switchValue = value;
-              });
-            },
-          ),
-        )
-      },
-      {
-        'image': ImagePath.changePassword,
-        'title': Strings.changePassword,
+        'image': ImagePath.tab_4,
+        'title': Strings.customer,
         'icon': ImagePath.forwardArrow,
         'child': null,
         'onTap': () {
@@ -109,7 +44,7 @@ class _MyAccountState extends State<MyAccount> {
       },
       {
         'image': ImagePath.help,
-        'title': Strings.help,
+        'title': Strings.reviewAndRating,
         'icon': ImagePath.forwardArrow,
         'child': null,
         'onTap': () {
@@ -118,7 +53,7 @@ class _MyAccountState extends State<MyAccount> {
       },
       {
         'image': ImagePath.termsAndConditions,
-        'title': Strings.termsAndCondition,
+        'title': Strings.wallet,
         'icon': ImagePath.forwardArrow,
         'child': null,
         'onTap': () {
@@ -128,7 +63,17 @@ class _MyAccountState extends State<MyAccount> {
       },
       {
         'image': ImagePath.privacyPolicy,
-        'title': Strings.privacyPolicy,
+        'title': Strings.settings,
+        'icon': ImagePath.forwardArrow,
+        'child': null,
+        'onTap': () {
+          customNavigation(
+              context: context, widget: const SettingsScreen());
+        },
+      },
+      {
+        'image': ImagePath.privacyPolicy,
+        'title': Strings.workingHours,
         'icon': ImagePath.forwardArrow,
         'child': null,
         'onTap': () {

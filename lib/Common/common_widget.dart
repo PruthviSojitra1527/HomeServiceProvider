@@ -572,7 +572,7 @@ Widget customGradientContainer(
     widgets.add(trailingChild);
   }
   return Container(
-    height: ResponsiveFlutter.of(context).scale(height ?? 90),
+    height: ResponsiveFlutter.of(context).scale(height ?? 95),
     decoration: const BoxDecoration(
       gradient: AppTheme.primaryGradient,
     ),

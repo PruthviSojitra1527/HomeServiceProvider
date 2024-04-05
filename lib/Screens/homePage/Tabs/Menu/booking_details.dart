@@ -71,7 +71,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                             customRoundBtn(
                                 context: context,
                                 height: scalingQuery.scale(35),
-                                color: appColors.btnColor,
+                                color: appColors.btnColor,onTap: (){},
                                 image: ImagePath.whiteMassage)
                           ],
                         ),

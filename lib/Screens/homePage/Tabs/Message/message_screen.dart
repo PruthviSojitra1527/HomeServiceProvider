@@ -27,7 +27,7 @@ class _MsgScreenState extends State<MsgScreen> {
             child: customRoundBtn(
                 context: context,
                 height: scalingQuery.scale(35),
-                color: appColors.btnColor,
+                color: appColors.btnColor,onTap: (){},
                 image: ImagePath.search),
           )
         ],
@@ -105,7 +105,7 @@ class _MsgScreenState extends State<MsgScreen> {
                                         context: context,
                                         color: appColors.btnColor,
                                         height: scalingQuery.scale(30),
-                                        padding: 0,
+                                        padding: 0,onTap: (){},
                                         child: Text(
                                           unseen.toString(),
                                           style: myText.boldText(

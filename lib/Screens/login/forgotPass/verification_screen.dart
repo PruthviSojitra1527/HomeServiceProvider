@@ -1,5 +1,4 @@
 import 'package:home_service/Screens/login/forgotPass/reset_pass_screen.dart';
-
 import '../../../../Common/all_import.dart';
 
 class VerificationScreen extends StatefulWidget {
@@ -90,9 +89,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     fieldStyle: FieldStyle.box,
                     otpFieldStyle: OtpFieldStyle(
                       backgroundColor: appColors.lightBackgroundColor,
-                      // Set background color
-                      borderColor:
-                          appColors.lightBackgroundColor, // Remove border
+                      borderColor: appColors.lightBackgroundColor,
                     ),
                     outlineBorderRadius: 15,
                     onCompleted: (pin) {

@@ -47,8 +47,14 @@ class Strings {
   static const String lastName = "Last Name";
   static const String fullName = "Full Name";
   static const String address = "Address";
+  static const String phoneNumber = "Phone Number";
   static const String subject = "Subjects";
   static const String description = "Descriptions";
+  static const String bankName = "Bank Name";
+  static const String acName = "Account Name";
+  static const String acNumber = "Account Number";
+  static const String ifscCode = "IFSC Code";
+  static const String upi = "UPI ID";
 
   static const String leaveApp = "Are You Want To Leave App?";
   static const String leave = "Leave App";
@@ -70,6 +76,9 @@ class Strings {
   static const String totalEarning = "Total Earnings";
   static const String completedJob = "Completed Job";
   static const String earnings = "Earnings";
+  static const String availability = "Availability";
+  static const String experience = "Experience";
+  static const String serviceArea = "Service Area";
 
   static const String enterAddress = "Type Your Place?";
   static const String selectServices = "Select Services";
@@ -142,6 +151,8 @@ class Strings {
   static const String privacyPolicyScreen = "Privacy Policy";
   static const String termsConditionScreen = "Terms & Conditions";
   static const String search = "Search";
+  static const String myServices = "My Services";
+  static const String personalDetails = "Personals Details";
 
   ///dummy strings
   static const String dummy_1 = "150 Experts";
@@ -157,6 +168,15 @@ Saladin, United Kingdom.""";
   static const String dummy_10 = "Charge (\$20/hr * 2hrs)";
   static const String dummy_11 = "\$40.0";
   static const String dummy_12 = "olinasecona@gmail.com";
+  static const String dummy_13 = "(406) 555-0120";
+  static const String dummy_14 = "Monday    To    Friday";
+  static const String dummy_15 = "08:30am   To    10:30pm";
+  static const String dummy_16 = "VICI Bank Ltd";
+  static const String dummy_17 = "Accel-pix Solution Pvt. Ltd.";
+  static const String dummy_18 = "0165 0500 5212";
+  static const String dummy_19 = "ICC0000165";
+  static const String dummy_20 = "ACCELPIX@ICICI";
+  static const String dummy_21 = "3 year";
 
   static const String dummyTC_3 = "Contrary to popular belief";
   static const String dummyTC_4 = "There are many variations of passages.";

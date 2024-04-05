@@ -1,9 +1,10 @@
+import 'package:home_service/Screens/homePage/Tabs/MyService/my_services_screen.dart';
+
 import '../../../../Common/all_import.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/account_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Home/home_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Menu/menu_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Message/message_screen.dart';
-import 'package:home_service/Screens/homePage/Tabs/Notification/notification_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,9 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  AppColors appColors = AppColors();
-  MyText myText = MyText();
-
   int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
@@ -44,11 +42,9 @@ class _HomePageState extends State<HomePage> {
     const MenuScreen(),
     const MsgScreen(),
     const HomeScreen(),
-    const NotificationScreen(),
+    const MyServicesScreen(),
     const MyAccount(),
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -124,8 +120,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
                   )
                 : currentIndex == index && currentIndex != 2
                     ? SizedBox(
-                        height: scalingQuery.scale(30),
-                        width: scalingQuery.scale(30),
+                        height: scalingQuery.scale(25),
+                        width: scalingQuery.scale(25),
                         child: Padding(
                           padding:
                               EdgeInsets.all(scalingQuery.moderateScale(5)),
@@ -136,8 +132,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
                         ),
                       )
                     : SizedBox(
-                        height: scalingQuery.scale(30),
-                        width: scalingQuery.scale(30),
+                        height: scalingQuery.scale(25),
+                        width: scalingQuery.scale(25),
                         child: Padding(
                           padding:
                               EdgeInsets.all(scalingQuery.moderateScale(5)),

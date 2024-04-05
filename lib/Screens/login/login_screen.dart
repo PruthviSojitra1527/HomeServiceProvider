@@ -1,5 +1,4 @@
-import 'package:home_service/Screens/login/signUp_screen.dart';
-
+import 'package:home_service/Screens/login/personal_details_screen.dart';
 import '../../../../Common/all_import.dart';
 import '../homePage/homepage_screen.dart';
 import 'forgotPass/forgot_pass_screen.dart';
@@ -42,7 +41,6 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
                       height: scalingQuery.verticalScale(300),
@@ -254,7 +252,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onTap: () {
                               customNavigation(
                                   context: context,
-                                  widget: const SignUpScreen());
+                                  widget: const PersonalDetailsScreen());
                             },
                             child: Text(
                               Strings.signUp.toUpperCase(),

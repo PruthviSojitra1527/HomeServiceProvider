@@ -37,8 +37,8 @@ class ImagePath {
   static const String tabAC_1 = "${icNBase}ic_msg_active.png";
   static const String tab_2 = "${icNBase}ic_home.png";
   static const String tabAC_2 = "${icNBase}ic_home.png";
-  static const String tab_3 = "${icNBase}ic_bell.png";
-  static const String tabAC_3 = "${icNBase}ic_bell_active.png";
+  static const String tab_3 = "${icNBase}ic_my_service.png";
+  static const String tabAC_3 = "${icNBase}ic_my_service_active.png";
   static const String tab_4 = "${icNBase}ic_account.png";
   static const String tabAC_4 = "${icNBase}ic_account_active.png";
 
@@ -57,7 +57,9 @@ class ImagePath {
   static const String gradientDesign = "${icBase}ic_gradient_design.png";
   static const String sendBtn = "${icBase}ic_send_btn.png";
   static const String addBtn = "${icBase}ic_add.png";
-  static const String whiteNotification  = "${icBase}ic_white_notification.png";
+  static const String addWhiteBtn = "${icBase}ic_add_white.png";
+  static const String more = "${icBase}ic_more.png";
+  static const String whiteNotification = "${icBase}ic_white_notification.png";
 
   static const String cleaning = "${icBase}ic_cleaning.png";
   static const String homePainting = "${icBase}ic_homePainting.png";
@@ -72,7 +74,8 @@ class ImagePath {
   static const String changeTheme = "${icBase}ic_change_theme.png";
   static const String help = "${icBase}ic_help.png";
   static const String privacyPolicy = "${icBase}ic_privacy_policy.png";
-  static const String termsAndConditions = "${icBase}ic_terms_and_condition.png";
+  static const String termsAndConditions =
+      "${icBase}ic_terms_and_condition.png";
 
   static const String bgShape = "${imgBase}img_BGShape.png";
 

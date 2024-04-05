@@ -55,7 +55,8 @@ class _ServiceDetailsState extends State<ServiceDetails> {
                                   color: appColors.white,
                                   image: dummyItemList[widget.index ?? 0]
                                       ['imageUrl'],
-                                  padding: 20.0),
+                                  padding: 20.0,
+                              onTap: (){}),
                               Text(
                                 dummyItemList[widget.index ?? 0]['name'],
                                 style: myText.semiBoldText(

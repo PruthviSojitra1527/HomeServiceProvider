@@ -26,12 +26,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       context: context,
                       height: 120,
                       title: Strings.dashboard,
-                      trailingChild: customRoundBtn(
-                          context: context,
-                          color: appColors.darkBlueTextColor,
-                          image: ImagePath.whiteNotification,
-                          padding: 12,
-                      height: scalingQuery.scale(40)
+                      trailingChild: Padding(
+                        padding:   EdgeInsets.all(scalingQuery.moderateScale(8)),
+                        child: customRoundBtn(
+                            context: context,
+                            color: appColors.darkBlueTextColor,
+                            image: ImagePath.whiteNotification,
+                            padding: 12,
+                        height: scalingQuery.scale(40),
+                          onTap: (){}
+                        ),
                       )),
                   Align(
                       heightFactor: 2,
@@ -224,6 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       color: appColors.green,
                                       image: ImagePath.checkMark,
                                       padding: 10,
+                                      onTap: (){},
                                       height: scalingQuery.scale(35),
                                     ),
                                   ),
@@ -234,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       context: context,
                                       color: appColors.red,
                                       image: ImagePath.cancelWhite,
-                                      padding: 11,
+                                      padding: 11,onTap: (){},
                                       height: scalingQuery.scale(35),
                                     ),
                                   ),

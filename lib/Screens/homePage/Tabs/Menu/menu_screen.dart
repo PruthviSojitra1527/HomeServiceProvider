@@ -44,7 +44,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 context: context,
                 color: appColors.darkBlueTextColor,
                 image: ImagePath.whiteNotification,
-                padding: 10,
+                padding: 10,onTap: (){},
                 height: scalingQuery.scale(35),
               ),
             ),
@@ -54,7 +54,7 @@ class _MenuScreenState extends State<MenuScreen> {
               child: customRoundBtn(
                 context: context,
                 color: appColors.btnColor,
-                image: ImagePath.search,
+                image: ImagePath.search,onTap: (){},
                 padding: 10,
                 height: scalingQuery.scale(35),
               ),

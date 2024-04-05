@@ -84,7 +84,6 @@ class ChatPageScreenState extends State<ChatPageScreen> {
                   child: Padding(
                     padding: EdgeInsets.all(scalingQuery.moderateScale(12)),
                     child: commonTextField(
-                      dismiss: false,
                       color: appColors.darkBlueTextColor,
                       context: context,
                       controller: _messageController,

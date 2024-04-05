@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:home_service/Screens/homePage/Tabs/Menu/booking_details.dart';
 import '../../../../Common/all_import.dart';
-import '../Screens/homePage/Tabs/Menu/review_rating_screen.dart';
 
 AppColors appColors = AppColors();
 MyText myText = MyText();
@@ -50,7 +48,7 @@ Widget commonTextField({
   TextEditingController? controller,
   textAlign = TextAlign.start,
   maxLines = 1,
-  dismiss = true,
+  dismiss = false,
 }) {
   return Row(
     children: [
@@ -404,6 +402,7 @@ Widget customUserCard({
                   context: context,
                   color: appColors.green,
                   image: ImagePath.call,
+                  onTap: () {},
                   height: ResponsiveFlutter.of(context).scale(35),
                   padding: 10)
               : Container(),
@@ -573,12 +572,12 @@ Widget customGradientContainer(
     widgets.add(trailingChild);
   }
   return Container(
-    height: ResponsiveFlutter.of(context).scale(height ?? 100),
+    height: ResponsiveFlutter.of(context).scale(height ?? 90),
     decoration: const BoxDecoration(
       gradient: AppTheme.primaryGradient,
     ),
     child: Padding(
-      padding: EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(20)),
+      padding: EdgeInsets.all(ResponsiveFlutter.of(context).scale(8)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -597,4 +596,95 @@ Widget customGradientContainer(
       ),
     ),
   );
+}
+
+Widget customServiceCard({
+  required context,
+  list,
+  index = 0,
+}) {
+  return customContainer(
+      context: context,
+      child: Padding(
+        padding:
+            EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(15)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal:
+                          ResponsiveFlutter.of(context).moderateScale(15)),
+                  child: Image.asset(
+                    list != null ? list[index]['imageUrl'] : ImagePath.cleaning,
+                    height: ResponsiveFlutter.of(context).scale(35),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      list != null ? list[index]['name'] : Strings.cleaning,
+                      style: myText.semiBoldText(
+                          color: appColors.darkBlueTextColor,
+                          size: ResponsiveFlutter.of(context).fontSize(2)),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "\$15/h",
+                          style: myText.regularText(),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: ResponsiveFlutter.of(context)
+                                  .moderateScale(5)),
+                          child: Text(
+                            "|",
+                            style: myText.regularText(
+                                color:
+                                    appColors.transactionText.withOpacity(0.3)),
+                          ),
+                        ),
+                        Image.asset(
+                          ImagePath.rating,
+                          height: ResponsiveFlutter.of(context).scale(10),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: ResponsiveFlutter.of(context)
+                                  .moderateScale(5)),
+                          child: Text(
+                            "4.5",
+                            style: myText.regularText(
+                              color: appColors.darkBlueTextColor,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          "(258 Reviews)",
+                          style: myText.regularText(
+                            color: appColors.transactionText,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+            customRoundBtn(
+              child: Image.asset(
+                ImagePath.more,
+                height: ResponsiveFlutter.of(context).scale(15),
+              ),
+              context: context,
+              onTap: () {},
+            ),
+          ],
+        ),
+      ));
 }

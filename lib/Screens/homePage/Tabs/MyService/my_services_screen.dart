@@ -1,5 +1,7 @@
 import 'package:home_service/Common/all_import.dart';
 
+import 'my_service_details_screen.dart';
+
 class MyServicesScreen extends StatefulWidget {
   const MyServicesScreen({super.key});
 
@@ -56,10 +58,19 @@ class _MyServicesScreenState extends State<MyServicesScreen> {
                 shrinkWrap: true,
                 itemCount: dummyItemList.length,
                 itemBuilder: (context, index) {
-                  return customServiceCard(
-                    context: context,
-                    list: dummyItemList,
-                    index: index,
+                  return InkWell(
+                    onTap: () {
+                      customNavigation(
+                          context: context,
+                          widget: MyServiceProviderDetails(
+                            index: index,
+                          ));
+                    },
+                    child: customServiceCard(
+                      context: context,
+                      list: dummyItemList,
+                      index: index,
+                    ),
                   );
                 },
               ),

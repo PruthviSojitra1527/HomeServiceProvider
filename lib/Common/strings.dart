@@ -35,6 +35,7 @@ class Strings {
       "Please Enter Your Registered Email Address.";
   static const String enterEmailOrMobile = "Enter your email id or mobile no";
   static const String submit = "SUBMIT";
+  static const String browse = "Browse";
 
   static const String enterTheVerificationCode =
       "Confirmation Code has been Sent to Your Email.";
@@ -72,6 +73,7 @@ class Strings {
   static const String service = "Service";
   static const String reviews = "Reviews";
   static const String viewAll = "View All";
+  static const String viewLess = "View Less";
   static const String myWork = "My Work";
   static const String totalEarning = "Total Earnings";
   static const String completedJob = "Completed Job";
@@ -97,6 +99,7 @@ class Strings {
   static const String expDate = "Exp D.";
   static const String upiId = "Enter UPI id";
   static const String saveAsCard = "Save as a card";
+  static const String uploadWorkPhoto = "Upload Work Photo";
 
   static const String serviceLocationAddress = "Service location address";
   static const String selectedServices = "Selected Services";

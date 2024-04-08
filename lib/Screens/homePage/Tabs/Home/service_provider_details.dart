@@ -83,7 +83,8 @@ class _ServiceState extends State<ServiceProviderDetails> {
                                 ),
                                 Padding(
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: scalingQuery.moderateScale(10)),
+                                      horizontal:
+                                          scalingQuery.moderateScale(10)),
                                   child: Text(
                                     "|",
                                     style: myText.regularText(
@@ -101,7 +102,8 @@ class _ServiceState extends State<ServiceProviderDetails> {
                                         TextSpan(
                                           text: "15",
                                           style: myText.regularText(
-                                              color: appColors.darkBlueTextColor,
+                                              color:
+                                                  appColors.darkBlueTextColor,
                                               size: scalingQuery.fontSize(2.5)),
                                         ),
                                         TextSpan(
@@ -120,11 +122,10 @@ class _ServiceState extends State<ServiceProviderDetails> {
                           height: scalingQuery.scale(35),
                           color: appColors.btnColor,
                           image: ImagePath.whiteMassage,
-                          onTap: (){},
+                          onTap: () {},
                         ),
                       ],
                     ),
-
                   ],
                 ),
               ),
@@ -358,78 +359,13 @@ class _ServiceState extends State<ServiceProviderDetails> {
                           Text(
                             Strings.viewAll,
                             style: myText.regularText(
-                              isUnderline: true,
+                                isUnderline: true,
                                 color: appColors.darkBlueTextColor,
                                 size: scalingQuery.fontSize(1.7)),
                           ),
                         ],
                       ),
-                    
-                      SizedBox(
-                        child: ListView.separated(
-                          padding: EdgeInsets.all(scalingQuery.moderateScale(0)),
-                            shrinkWrap: true,
-                            primary: false,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(
-                                            scalingQuery.scale(5)),
-                                        child: customUserImage(
-                                          context: context,
-                                          image: dummyReviewList[index]
-                                              ['imageUrl'],
-                                          height: scalingQuery.scale(30),
-                                        ),
-                                      ),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            dummyReviewList[index]['name'],
-                                            style: myText.semiBoldText(
-                                                color:
-                                                    appColors.darkBlueTextColor,
-                                                size:
-                                                    scalingQuery.fontSize(1.8)),
-                                          ),
-                                          Text(
-                                            dummyReviewList[index]['time'],
-                                            style: myText.regularText(
-                                                color:
-                                                    appColors.darkBlueTextColor,
-                                                size:
-                                                    scalingQuery.fontSize(1.8)),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  Text(
-                                    dummyReviewList[index]['review'],
-                                    style: myText.regularText(
-                                        size: scalingQuery.fontSize(1.5)),
-                                  ),
-                                ],
-                              );
-                            },
-                            separatorBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.all(scalingQuery.scale(8)),
-                                child: Divider(
-                                  height: scalingQuery.scale(1),
-                                ),
-                              );
-                            },
-                            itemCount: dummyReviewList.length),
-                      ),
+                      reviewRatting(context: context),
                       SizedBox(
                         height: scalingQuery.scale(10),
                       ),
@@ -491,4 +427,108 @@ class _ServiceState extends State<ServiceProviderDetails> {
       ),
     );
   }
+}
+
+reviewRatting({required context,scrolling = false}) {
+  return SizedBox(
+    child: ListView.separated(
+        padding: EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(0)),
+        shrinkWrap: true,
+        primary: false,
+        physics: !scrolling ? const NeverScrollableScrollPhysics() : const AlwaysScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(
+                            ResponsiveFlutter.of(context).scale(5)),
+                        child: customUserImage(
+                          context: context,
+                          image: dummyReviewList[index]['imageUrl'],
+                          height: ResponsiveFlutter.of(context).scale(30),
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            dummyReviewList[index]['name'],
+                            style: myText.semiBoldText(
+                                color: appColors.darkBlueTextColor,
+                                size: ResponsiveFlutter.of(context)
+                                    .fontSize(1.8)),
+                          ),
+                          Text(
+                            dummyReviewList[index]['time'],
+                            style: myText.regularText(
+                                color: appColors.darkBlueTextColor,
+                                size: ResponsiveFlutter.of(context)
+                                    .fontSize(1.8)),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        right: ResponsiveFlutter.of(context).moderateScale(8)),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: appColors.yellow.withOpacity(0.3)),
+                      child: Padding(
+                        padding: EdgeInsets.all(
+                            ResponsiveFlutter.of(context).moderateScale(5)),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              ImagePath.rating,
+                              height: ResponsiveFlutter.of(context).scale(12),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: ResponsiveFlutter.of(context)
+                                      .moderateScale(5)),
+                              child: Text(
+                                "4.5",
+                                style: myText.regularText(
+                                    color: appColors.darkBlueTextColor),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.all(
+                    ResponsiveFlutter.of(context).moderateScale(12)),
+                child: Text(
+                  dummyReviewList[index]['review'],
+                  style: myText.regularText(
+                      size: ResponsiveFlutter.of(context).fontSize(1.7)),
+                ),
+              ),
+            ],
+          );
+        },
+        separatorBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.all(ResponsiveFlutter.of(context).scale(8)),
+            child: Divider(
+              height: ResponsiveFlutter.of(context).scale(1),
+            ),
+          );
+        },
+        itemCount: dummyReviewList.length),
+  );
 }

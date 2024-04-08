@@ -1,7 +1,7 @@
 import 'package:home_service/Screens/homePage/Tabs/Account/change_password_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/edit_profile.dart';
-import 'package:home_service/Screens/homePage/Tabs/Account/help_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/privacy_policy_screen.dart';
+import 'package:home_service/Screens/homePage/Tabs/Account/ratting_review.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/settings_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/terms_and_condition_screen.dart';
 import '../../../../Common/all_import.dart';
@@ -48,7 +48,7 @@ class _MyAccountState extends State<MyAccount> {
         'icon': ImagePath.forwardArrow,
         'child': null,
         'onTap': () {
-          customNavigation(context: context, widget: const HelpScreen());
+          customNavigation(context: context, widget: const ReviewRatings());
         },
       },
       {

@@ -17,23 +17,38 @@ class _BankDetailsScreenState extends State<BankDetailsScreen> {
       bottom: false,
       child: Scaffold(
         backgroundColor: appColors.appLightColor,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        body: Stack(
+          alignment: Alignment.bottomCenter,
           children: [
-            customGradientContainer(
-              context: context,
-              title: Strings.bankDetails,
-              leadingChild: customRoundBtn(
-                height: scalingQuery.scale(35),
-                context: context,
-                image: ImagePath.blueBack,
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                customGradientContainer(
+                  context: context,
+                  title: Strings.bankDetails,
+                  leadingChild: customRoundBtn(
+                    height: scalingQuery.scale(35),
+                    context: context,
+                    image: ImagePath.blueBack,
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(
+                      scalingQuery.moderateScale(8),
+                    ),
+                    child: bankDetails(context: context),
+                  ),
+                ),
+              ],
             ),
             Padding(
-              padding: EdgeInsets.all(
-                scalingQuery.moderateScale(8),
+              padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
+              child: commonButton(
+                context: context,
+                width: scalingQuery.wp(90),
+                title: Strings.submit.toUpperCase(),
               ),
-              child: bankDetails(context: context),
             ),
           ],
         ),

@@ -93,6 +93,42 @@ patients. Mrs. Navina gar assisted very well and
 taken good care towards patients. Overall experience
 is satisfactory.''',
   },
+  {
+    'imageUrl': ImagePath.dummyUser,
+    'name': 'Devon Lane',
+    'time': '2 Nov 2021 @ 10:18am',
+    'review': '''It's very well mannered staff good coordination with
+patients. Mrs. Provenance garu assisted very well and
+taken good care towards patients. Overall experience
+is satisfactory.''',
+  },
+  {
+    'imageUrl': ImagePath.dummyUser3,
+    'name': 'Jane Cooper',
+    'time': '2 Nov 2021 @ 10:18am',
+    'review': '''It's very well mannered staff good coordination with
+patients. Mrs. Provenance garu assisted very well and
+taken good care towards patients. Overall experience
+is satisfactory.''',
+  },
+  {
+    'imageUrl': ImagePath.dummyUser1,
+    'name': 'Devon Lane',
+    'time': '2 Nov 2021 @ 10:18am',
+    'review': '''It's very well mannered staff good coordination with
+patients. Mrs. Provenance garu assisted very well and
+taken good care towards patients. Overall experience
+is satisfactory.''',
+  },
+  {
+    'imageUrl': ImagePath.dummyUser2,
+    'name': 'Jane Cooper',
+    'time': '2 Nov 2021 @ 10:18am',
+    'review': '''It's very well mannered staff good coordination with
+patients. Mrs. Provenance garu assisted very well and
+taken good care towards patients. Overall experience
+is satisfactory.''',
+  },
 ];
 
 List<Map<String, dynamic>> dummyImageList = [

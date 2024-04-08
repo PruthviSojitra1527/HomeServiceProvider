@@ -1,3 +1,4 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:home_service/Screens/homePage/Tabs/Menu/booking_details.dart';
 import '../../../../Common/all_import.dart';
 
@@ -20,7 +21,7 @@ Widget commonButton(
         height: height ?? ResponsiveFlutter.of(context).verticalScale(40),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(15),
             color: btnColor ?? appColors.btnColor,
           ),
           child: Center(
@@ -554,15 +555,18 @@ Widget customGradientContainer(
     leadingChild,
     String title = "",
     trailingChild,
-    double? height}) {
+    double? height,
+    centerChild}) {
   List<Widget> widgets = [
     Padding(
       padding: EdgeInsets.symmetric(
           horizontal: ResponsiveFlutter.of(context).moderateScale(15)),
-      child: Text(
-        title,
-        style: myText.boldText(size: ResponsiveFlutter.of(context).fontSize(3)),
-      ),
+      child: centerChild ??
+          Text(
+            title,
+            style: myText.boldText(
+                size: ResponsiveFlutter.of(context).fontSize(3)),
+          ),
     ),
   ];
   if (leadingChild != null) {
@@ -687,4 +691,51 @@ Widget customServiceCard({
           ],
         ),
       ));
+}
+
+Widget customUploadContainer({required context}) {
+  return Padding(
+    padding: EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(8)),
+    child: DottedBorder(
+      color: appColors.btnColor,
+      strokeWidth: ResponsiveFlutter.of(context).scale(1.5),
+      dashPattern: [
+        ResponsiveFlutter.of(context).scale(5),
+        ResponsiveFlutter.of(context).scale(3)
+      ],
+      borderType: BorderType.RRect,
+      radius: Radius.circular(ResponsiveFlutter.of(context).scale(10)),
+      child: SizedBox(
+        width: ResponsiveFlutter.of(context).wp(90),
+        child: Padding(
+          padding:
+              EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(15)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                Strings.uploadWorkPhoto,
+                style: myText.semiBoldText(
+                  color: appColors.darkBlueTextColor,
+                  size: ResponsiveFlutter.of(context).fontSize(2.25),
+                ),
+              ),
+              SizedBox(
+                height: ResponsiveFlutter.of(context).scale(10),
+              ),
+              commonButton(
+                context: context,
+                width: ResponsiveFlutter.of(context).scale(100),
+                height: ResponsiveFlutter.of(context).scale(40),
+                btnColor: appColors.btnColor.withOpacity(0.1),
+                title: Strings.browse.toUpperCase(),
+                textColor: appColors.btnColor,
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
 }

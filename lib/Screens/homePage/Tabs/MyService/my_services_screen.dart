@@ -1,4 +1,5 @@
 import 'package:home_service/Common/all_import.dart';
+import 'package:home_service/Screens/homePage/Tabs/MyService/add_service.dart';
 
 import 'my_service_details_screen.dart';
 
@@ -44,7 +45,10 @@ class _MyServicesScreenState extends State<MyServicesScreen> {
                       color: appColors.btnColor,
                       image: ImagePath.addWhiteBtn,
                       padding: 5,
-                      onTap: () {},
+                      onTap: () {
+                        customNavigation(
+                            context: context, widget: const AddService());
+                      },
                       height: scalingQuery.scale(35),
                     ),
                   ),

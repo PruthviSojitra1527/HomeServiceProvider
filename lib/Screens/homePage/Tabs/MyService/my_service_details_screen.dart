@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
 import '../../../../Common/all_import.dart';
+import 'edit_service.dart';
 
 class MyServiceProviderDetails extends StatefulWidget {
   const MyServiceProviderDetails({super.key, required this.index});
@@ -140,7 +138,13 @@ class _ServiceState extends State<MyServiceProviderDetails> {
                                       child: Column(
                                         children: [
                                           InkWell(
-                                            onTap: () {},
+                                            onTap: () {
+                                              FocusScope.of(context).unfocus();
+                                              Navigator.of(context).pop();
+                                              customNavigation(
+                                                  context: context,
+                                                  widget: const EditService());
+                                            },
                                             child: Row(
                                               children: [
                                                 Image.asset(

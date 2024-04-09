@@ -37,6 +37,7 @@ class Strings {
   static const String browse = "Browse";
   static const String submit = "SUBMIT";
   static const String edit = "Edit";
+  static const String editPrice = "Edit Price";
   static const String dlt = "Delete";
 
   static const String enterTheVerificationCode =

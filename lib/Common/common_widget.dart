@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:home_service/Screens/homePage/Tabs/Menu/booking_details.dart';
+import 'package:home_service/Screens/homePage/Tabs/MyService/edit_service.dart';
 import '../../../../Common/all_import.dart';
 
 AppColors appColors = AppColors();
@@ -686,7 +687,9 @@ Widget customServiceCard({
                 height: ResponsiveFlutter.of(context).scale(15),
               ),
               context: context,
-              onTap: () {},
+              onTap: () {
+                customNavigation(context: context, widget: const EditService());
+              },
             ),
           ],
         ),

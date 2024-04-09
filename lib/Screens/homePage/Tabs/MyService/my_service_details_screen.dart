@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 import '../../../../Common/all_import.dart';
 
 class MyServiceProviderDetails extends StatefulWidget {
@@ -121,7 +124,71 @@ class _ServiceState extends State<MyServiceProviderDetails> {
                           height: scalingQuery.scale(35),
                           color: appColors.appLightColor,
                           image: ImagePath.more,
-                          onTap: () {},
+                          onTap: () {
+                            showModalBottomSheet<void>(
+                              context: context,
+                              shape:
+                                  Border.all(color: appColors.appMediumColor),
+                              backgroundColor: appColors.appLightColor,
+                              builder: (BuildContext context) {
+                                return customContainer(
+                                    context: context,
+                                    height: scalingQuery.scale(80),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(
+                                          scalingQuery.moderateScale(12)),
+                                      child: Column(
+                                        children: [
+                                          InkWell(
+                                            onTap: () {},
+                                            child: Row(
+                                              children: [
+                                                Image.asset(
+                                                  ImagePath.editBlue,
+                                                  height:
+                                                      scalingQuery.scale(15),
+                                                ),
+                                                SizedBox(
+                                                  width: scalingQuery.scale(10),
+                                                ),
+                                                Text(
+                                                  Strings.edit.toUpperCase(),
+                                                  style: myText.semiBoldText(
+                                                      color: appColors
+                                                          .darkBlueTextColor,
+                                                      size: scalingQuery
+                                                          .fontSize(2)),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: scalingQuery.scale(10),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Image.asset(
+                                                ImagePath.dlt,
+                                                height: scalingQuery.scale(15),
+                                              ),
+                                              SizedBox(
+                                                width: scalingQuery.scale(10),
+                                              ),
+                                              Text(
+                                                Strings.dlt.toUpperCase(),
+                                                style: myText.semiBoldText(
+                                                    color: appColors.red,
+                                                    size: scalingQuery
+                                                        .fontSize(2)),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ));
+                              },
+                            );
+                          },
                         ),
                       ],
                     ),

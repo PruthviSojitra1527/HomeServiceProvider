@@ -34,8 +34,10 @@ class Strings {
   static const String pleaseFillYourEmail =
       "Please Enter Your Registered Email Address.";
   static const String enterEmailOrMobile = "Enter your email id or mobile no";
-  static const String submit = "SUBMIT";
   static const String browse = "Browse";
+  static const String submit = "SUBMIT";
+  static const String edit = "Edit";
+  static const String dlt = "Delete";
 
   static const String enterTheVerificationCode =
       "Confirmation Code has been Sent to Your Email.";
@@ -163,6 +165,7 @@ class Strings {
   static const String personalDetails = "Personals Details";
   static const String bankDetails = "Bank Details";
   static const String cancellationPolicy = "Cancellation Policy";
+  static const String addServices = "Add Services";
 
   ///dummy strings
   static const String dummy_1 = "150 Experts";

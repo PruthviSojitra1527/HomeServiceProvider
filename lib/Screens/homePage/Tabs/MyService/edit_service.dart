@@ -18,32 +18,29 @@ class _EditServiceState extends State<EditService> {
       bottom: false,
       child: Scaffold(
         backgroundColor: appColors.appLightColor,
-        body: Stack(
-          alignment: Alignment.bottomCenter,
+        body: Column(
           children: [
-            Column(
-              children: [
-                customGradientContainer(
-                  context: context,
-                  leadingChild: customRoundBtn(
-                    context: context,
-                    height: scalingQuery.scale(35),
-                    color: appColors.white,
-                    image: ImagePath.blueBack,
-                  ),
-                  title: Strings.editPrice,
-                ),
-                const AddServiceFunction(length: 1,),
-                Padding(
-                  padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
-                  child: commonButton(
-                    context: context,
-                    width: scalingQuery.wp(90),
-                    title: Strings.save.toUpperCase(),
-                    onTap: () {},
-                  ),
-                ),
-              ],
+            customGradientContainer(
+              context: context,
+              leadingChild: customRoundBtn(
+                context: context,
+                height: scalingQuery.scale(35),
+                color: appColors.white,
+                image: ImagePath.blueBack,
+              ),
+              title: Strings.editPrice,
+            ),
+            const AddServiceFunction(
+              length: 1,
+            ),
+            Padding(
+              padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
+              child: commonButton(
+                context: context,
+                width: scalingQuery.wp(90),
+                title: Strings.save.toUpperCase(),
+                onTap: () {},
+              ),
             ),
           ],
         ),

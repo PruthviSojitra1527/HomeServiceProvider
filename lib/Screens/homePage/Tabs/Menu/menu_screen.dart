@@ -1,5 +1,6 @@
 import 'package:home_service/Screens/homePage/Tabs/Menu/active_tab.dart';
 import 'package:home_service/Screens/homePage/Tabs/Menu/upcoming_tab.dart';
+import 'package:home_service/Screens/homePage/Tabs/Notification/notification_screen.dart';
 
 import '../../../../Common/all_import.dart';
 import 'canceled_tab.dart';
@@ -32,11 +33,12 @@ class _MenuScreenState extends State<MenuScreen> {
         appBar: AppBar(
           backgroundColor: appColors.transparent,
           elevation: 0,
+          leadingWidth: 0,
+          leading: Container(),
           title: Text(
             Strings.myBooking,
             style: myText.boldText(),
           ),
-          centerTitle: false,
           actions: [
             Padding(
               padding:  EdgeInsets.all(scalingQuery.moderateScale(8)),
@@ -44,7 +46,9 @@ class _MenuScreenState extends State<MenuScreen> {
                 context: context,
                 color: appColors.darkBlueTextColor,
                 image: ImagePath.whiteNotification,
-                padding: 10,onTap: (){},
+                padding: 10,onTap: (){
+                  customNavigation(context: context, widget: const NotificationScreen());
+              },
                 height: scalingQuery.scale(35),
               ),
             ),
@@ -59,6 +63,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 height: scalingQuery.scale(35),
               ),
             ),
+
           ],
           flexibleSpace: Container(
             height: scalingQuery.scale(100),

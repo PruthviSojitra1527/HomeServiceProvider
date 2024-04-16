@@ -23,7 +23,11 @@ class _CanceledScreenState extends State<CanceledScreen> {
                 itemCount: dummyBooking.length,
                 itemBuilder: (context, index) {
                   return customBookingCard(
-                      context: context, list: dummyBooking, index: index);
+                    context: context,
+                    list: dummyBooking,
+                    index: index,
+                    isCanceledScreen: true,
+                  );
                 },
               )
             : customNoData(

@@ -29,10 +29,13 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
         backgroundColor: appColors.appMediumColor,
         body: Column(
           children: [
-            customAppBar(context: context, title: Strings.notificationSettings),
-            SizedBox(
-              height: scalingQuery.scale(20),
-            ),
+            customGradientContainer(context: context, title: Strings.notificationSettings,leadingChild: customRoundBtn(
+              context: context,
+              height: ResponsiveFlutter.of(context).scale(35),
+              color: appColors.white,
+              image: ImagePath.blueBack,
+            ),),
+
             Padding(
               padding: EdgeInsets.all(scalingQuery.moderateScale(15)),
               child: Row(

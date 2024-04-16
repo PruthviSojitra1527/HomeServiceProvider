@@ -17,115 +17,109 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
     return Scaffold(
       backgroundColor: appColors.appMediumColor,
-      appBar: AppBar(
-        backgroundColor: appColors.transparent,
-        elevation: 0,
-        title: Text(
-          Strings.notification,
-          style: myText.boldText(),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.all(scalingQuery.moderateScale(10)),
-            child: InkWell(
-              onTap: () {},
-              child: Text(
-                Strings.clear,
-                style: myText.semiBoldText(),
-              ),
-            ),
-          )
-        ],
-        centerTitle: false,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: AppTheme.primaryGradient,
-          ),
-        ),
-      ),
       body: dummyNotification.isNotEmpty
-          ? SizedBox(
-              height: scalingQuery.hp(85),
-              child: ListView.builder(
-                itemCount: dummyNotification.length,
-                itemBuilder: (context, index) {
-                  List i = dummyNotification[index]['notifications'];
+          ? Column(
+            children: [
+              customGradientContainer(context: context,title: Strings.notification,leadingChild: customRoundBtn(
+                context: context,
+                height: ResponsiveFlutter.of(context).scale(35),
+                color: appColors.white,
+                image: ImagePath.blueBack,
+              ),
+              trailingChild:  Padding(
+                padding: EdgeInsets.all(scalingQuery.moderateScale(10)),
+                child: InkWell(
+                  onTap: () {},
+                  child: Text(
+                    Strings.clear,
+                    style: myText.semiBoldText(),
+                  ),
+                ),
+              ),),
+              Expanded(
+                  child: ListView.builder(
+                    itemCount: dummyNotification.length,
+                    padding: EdgeInsets.zero,
+                    itemBuilder: (context, index) {
+                      List i = dummyNotification[index]['notifications'];
 
-                  return Padding(
-                    padding: EdgeInsets.all(
-                        ResponsiveFlutter.of(context).moderateScale(15)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          dummyNotification[index]['time'],
-                          style: myText.boldText(
-                              color: appColors.transactionText,
-                              size: scalingQuery.fontSize(2.5)),
-                        ),
-                        Container(
-                            color: appColors.appMediumColor,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.max,
-                              children: i
-                                  .map((e) =>customContainer(context: context, child: Padding(
-                                padding: EdgeInsets.all(
-                                    ResponsiveFlutter.of(context)
-                                        .moderateScale(8)),
-                                child: Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment
-                                      .spaceBetween,
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.end,
-                                  children: [
-                                    Row(
+                      return Padding(
+                        padding: EdgeInsets.all(
+                            ResponsiveFlutter.of(context).moderateScale(15)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              dummyNotification[index]['time'],
+                              style: myText.boldText(
+                                  color: appColors.transactionText,
+                                  size: scalingQuery.fontSize(2.5)),
+                            ),
+                            Container(
+                                color: appColors.appMediumColor,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: i
+                                      .map((e) =>customContainer(context: context, child: Padding(
+                                    padding: EdgeInsets.all(
+                                        ResponsiveFlutter.of(context)
+                                            .moderateScale(8)),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment
+                                          .spaceBetween,
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.end,
                                       children: [
-                                        Padding(
-                                          padding: EdgeInsets.all(
-                                              scalingQuery
-                                                  .moderateScale(
-                                                  5)),
-                                          child: customRoundBtn(
-                                            onTap: (){},
-                                            context: context,
-                                            image: e['icon'],
-                                            height: scalingQuery
-                                                .scale(20),
-                                            color: appColors
-                                                .appDarkColor
-                                                .withOpacity(0.5),
-                                            padding: 5,
-                                          ),
+                                        Row(
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.all(
+                                                  scalingQuery
+                                                      .moderateScale(
+                                                      5)),
+                                              child: customRoundBtn(
+                                                onTap: (){},
+                                                context: context,
+                                                image: e['icon'],
+                                                height: scalingQuery
+                                                    .scale(20),
+                                                color: appColors
+                                                    .appDarkColor
+                                                    .withOpacity(0.5),
+                                                padding: 5,
+                                              ),
+                                            ),
+                                            Text(
+                                              e['msg'].toString(),
+                                              style: myText.regularText(
+                                                  color: appColors
+                                                      .darkBlueTextColor),
+                                            ),
+                                          ],
                                         ),
                                         Text(
-                                          e['msg'].toString(),
+                                          e['time'].toString(),
                                           style: myText.regularText(
-                                              color: appColors
-                                                  .darkBlueTextColor),
+                                              size: scalingQuery
+                                                  .fontSize(1.5)),
                                         ),
                                       ],
                                     ),
-                                    Text(
-                                      e['time'].toString(),
-                                      style: myText.regularText(
-                                          size: scalingQuery
-                                              .fontSize(1.5)),
-                                    ),
-                                  ],
-                                ),
-                              ),))
-                                  .toList(),
-                            )),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            )
+                                  ),))
+                                      .toList(),
+                                )),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+            ],
+          )
           : customNoData(
               context: context,
               image: ImagePath.noNotification,

@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
-
 import '../../../../Common/all_import.dart';
+import '../MyService/my_service_details_screen.dart';
 
 class ReviewRatings extends StatefulWidget {
   const ReviewRatings({super.key});
@@ -30,9 +29,14 @@ class _ReviewRatingsState extends State<ReviewRatings> {
               ),
             ),
             Expanded(
-              child: Padding(
-                padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
-                child: reviewRatting(context: context, scrolling: true),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
+                  child: ReviewRatingFunction(
+                    text: false,
+                    length: dummyReviewList.length,
+                  ),
+                ),
               ),
             ),
           ],

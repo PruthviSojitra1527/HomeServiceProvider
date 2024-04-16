@@ -20,7 +20,16 @@ class ChatPageScreenState extends State<ChatPageScreen> {
       backgroundColor: appColors.appLightColor,
       body: Column(
         children: [
-          customAppBar(context: context, title: widget.userName),
+          customGradientContainer(
+            context: context,
+            title: widget.userName,
+            leadingChild: customRoundBtn(
+              context: context,
+              height: ResponsiveFlutter.of(context).scale(35),
+              color: appColors.white,
+              image: ImagePath.blueBack,
+            ),
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: _messages.length,

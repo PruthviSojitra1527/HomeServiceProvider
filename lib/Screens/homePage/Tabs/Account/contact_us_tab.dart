@@ -23,106 +23,114 @@ class _ContactUsState extends State<ContactUs> {
           body: Stack(
             alignment: Alignment.bottomCenter,
             children: [
-              Column(
-                children: [
-                  SizedBox(
-                    height: scalingQuery.scale(30),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.all(scalingQuery.moderateScale(5)),
-                        child: Text(
-                          Strings.fullName,
-                          style: myText.regularText(
-                              size: scalingQuery.fontSize(1.8)),
-                        ),
+                      SizedBox(
+                        height: scalingQuery.scale(17),
                       ),
-                      customContainer(
-                        context: context,
-                        child: Padding(
-                          padding:
-                              EdgeInsets.all(scalingQuery.moderateScale(10)),
-                          child: commonTextField(
-                            context: context,
-                            controller: nameController,
-                            color: appColors.darkBlueTextColor,
-                            hintText: Strings.dummy_5,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(scalingQuery.moderateScale(5)),
+                            child: Text(
+                              Strings.fullName,
+                              style: myText.regularText(
+                                  size: scalingQuery.fontSize(1.8)),
+                            ),
                           ),
-                        ),
-                        color: appColors.appMediumColor,
-                        width: scalingQuery.wp(85),
-                        height: scalingQuery.scale(45),
+                          customContainer(
+                            context: context,
+                            child: Padding(
+                              padding:
+                              EdgeInsets.all(scalingQuery.moderateScale(10)),
+                              child: commonTextField(
+                                context: context,
+                                controller: nameController,
+                                color: appColors.darkBlueTextColor,
+                                hintText: Strings.dummy_5,
+                              ),
+                            ),
+                            color: appColors.appMediumColor,
+                            width: scalingQuery.wp(85),
+                            height: scalingQuery.scale(45),
+                          ),
+                        ],
                       ),
+                      SizedBox(
+                        height: scalingQuery.scale(15),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(scalingQuery.moderateScale(5)),
+                            child: Text(
+                              Strings.subject,
+                              style: myText.regularText(
+                                  size: scalingQuery.fontSize(1.8)),
+                            ),
+                          ),
+                          customContainer(
+                            context: context,
+                            child: Padding(
+                              padding:
+                              EdgeInsets.all(scalingQuery.moderateScale(10)),
+                              child: commonTextField(
+                                context: context,
+                                controller: subjectController,
+                                hintText: Strings.writeSubject,
+                              ),
+                            ),
+                            color: appColors.appMediumColor,
+                            width: scalingQuery.wp(85),
+                            height: scalingQuery.scale(45),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: scalingQuery.scale(15),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(scalingQuery.moderateScale(5)),
+                            child: Text(
+                              Strings.description,
+                              style: myText.regularText(
+                                  size: scalingQuery.fontSize(1.8)),
+                            ),
+                          ),
+                          customContainer(
+                            context: context,
+                            height: scalingQuery.scale(200),
+                            alignment: Alignment.topLeft,
+                            child: Padding(
+                              padding:
+                              EdgeInsets.all(scalingQuery.moderateScale(10)),
+                              child: commonTextField(
+                                context: context,
+                                controller: descriptionController,
+                                hintText: Strings.writeHere,
+                                textAlign: TextAlign.start,
+                                maxLines: 10,
+                              ),
+                            ),
+                            color: appColors.appMediumColor,
+                            width: scalingQuery.wp(85),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: scalingQuery.hp(50),
+                      )
                     ],
                   ),
-                  SizedBox(
-                    height: scalingQuery.scale(30),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(scalingQuery.moderateScale(5)),
-                        child: Text(
-                          Strings.subject,
-                          style: myText.regularText(
-                              size: scalingQuery.fontSize(1.8)),
-                        ),
-                      ),
-                      customContainer(
-                        context: context,
-                        child: Padding(
-                          padding:
-                              EdgeInsets.all(scalingQuery.moderateScale(10)),
-                          child: commonTextField(
-                            context: context,
-                            controller: subjectController,
-                            hintText: Strings.writeSubject,
-                          ),
-                        ),
-                        color: appColors.appMediumColor,
-                        width: scalingQuery.wp(85),
-                        height: scalingQuery.scale(45),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: scalingQuery.scale(30),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(scalingQuery.moderateScale(5)),
-                        child: Text(
-                          Strings.description,
-                          style: myText.regularText(
-                              size: scalingQuery.fontSize(1.8)),
-                        ),
-                      ),
-                      customContainer(
-                        context: context,
-                        height: scalingQuery.scale(200),
-                        alignment: Alignment.topLeft,
-                        child: Padding(
-                          padding:
-                              EdgeInsets.all(scalingQuery.moderateScale(10)),
-                          child: commonTextField(
-                            context: context,
-                            controller: descriptionController,
-                            hintText: Strings.writeHere,
-                            textAlign: TextAlign.start,
-                            maxLines: 10,
-                          ),
-                        ),
-                        color: appColors.appMediumColor,
-                        width: scalingQuery.wp(85),
-                      ),
-                    ],
-                  ),
-                ],
+                ),
               ),
               Padding(
                 padding: EdgeInsets.all(scalingQuery.moderateScale(20)),

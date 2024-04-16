@@ -181,17 +181,23 @@ Widget customUserImage({required context, required image, height}) {
   );
 }
 
-Widget customBookingCard({
-  required context,
-  required list,
-  required index,
-  child,
-}) {
+Widget customBookingCard(
+    {required context,
+    required list,
+    required index,
+    isCompletedScreen = false,
+    isCanceledScreen = false,
+    child}) {
   return InkWell(
       onTap: () {
         customNavigation(
           context: context,
-          widget: BookingDetails(list: list, index: index),
+          widget: BookingDetails(
+            list: list,
+            index: index,
+            isCompletedScreen: isCompletedScreen,
+            isCanceledScreen: isCanceledScreen,
+          ),
         );
       },
       child: customContainer(
@@ -247,6 +253,29 @@ Widget customBookingCard({
                       ),
                     ],
                   ),
+                  // isCompletedScreen
+                  //     ? InkWell(
+                  //   onTap: () {
+                  //     customNavigation(
+                  //       context: context,
+                  //       widget: ReviewAndRatingScreen(
+                  //         list: list,
+                  //         index: index,
+                  //       ),
+                  //     );
+                  //   },
+                  //   child: Padding(
+                  //     padding: EdgeInsets.symmetric(
+                  //         horizontal: ResponsiveFlutter.of(context)
+                  //             .moderateScale(5)),
+                  //     child: Text(
+                  //       Strings.writeReview,
+                  //       style: myText.regularText(
+                  //           color: appColors.blueTextColor,
+                  //           isUnderline: true),
+                  //     ),
+                  //   ),
+                  // )
                   child ?? Container(),
                 ],
               ),
@@ -569,15 +598,18 @@ Widget customGradientContainer(
                 size: ResponsiveFlutter.of(context).fontSize(3)),
           ),
     ),
+    trailingChild ??
+        SizedBox(
+          height: ResponsiveFlutter.of(context).scale(8),
+          width: ResponsiveFlutter.of(context).scale(30),
+        ),
   ];
   if (leadingChild != null) {
     widgets.insert(0, leadingChild);
   }
-  if (trailingChild != null) {
-    widgets.add(trailingChild);
-  }
+
   return Container(
-    height: ResponsiveFlutter.of(context).scale(height ?? 95),
+    height: ResponsiveFlutter.of(context).scale(height ?? 90),
     decoration: const BoxDecoration(
       gradient: AppTheme.primaryGradient,
     ),

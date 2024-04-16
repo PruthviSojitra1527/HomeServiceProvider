@@ -1,5 +1,6 @@
 import 'package:home_service/Common/all_import.dart';
 import 'package:home_service/Screens/homePage/Tabs/MyService/add_service.dart';
+import 'package:home_service/Screens/homePage/Tabs/Notification/notification_screen.dart';
 
 import 'my_service_details_screen.dart';
 
@@ -27,30 +28,30 @@ class _MyServicesScreenState extends State<MyServicesScreen> {
               title: Strings.myServices,
               trailingChild: Row(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
-                    child: customRoundBtn(
-                      context: context,
-                      color: appColors.darkBlueTextColor,
-                      image: ImagePath.whiteNotification,
-                      padding: 10,
-                      onTap: () {},
-                      height: scalingQuery.scale(35),
-                    ),
+                  customRoundBtn(
+                    context: context,
+                    color: appColors.darkBlueTextColor,
+                    image: ImagePath.whiteNotification,
+                    padding: 10,
+                    onTap: () {
+                      customNavigation(
+                          context: context, widget: const NotificationScreen());
+                    },
+                    height: scalingQuery.scale(35),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
-                    child: customRoundBtn(
-                      context: context,
-                      color: appColors.btnColor,
-                      image: ImagePath.addWhiteBtn,
-                      padding: 5,
-                      onTap: () {
-                        customNavigation(
-                            context: context, widget: const AddService());
-                      },
-                      height: scalingQuery.scale(35),
-                    ),
+                  SizedBox(
+                    width: scalingQuery.scale(10),
+                  ),
+                  customRoundBtn(
+                    context: context,
+                    color: appColors.btnColor,
+                    image: ImagePath.addWhiteBtn,
+                    padding: 5,
+                    onTap: () {
+                      customNavigation(
+                          context: context, widget: const AddService());
+                    },
+                    height: scalingQuery.scale(35),
                   ),
                 ],
               ),

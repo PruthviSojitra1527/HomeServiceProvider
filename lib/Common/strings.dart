@@ -132,6 +132,7 @@ class Strings {
   static const String wallet = "Wallet";
   static const String settings = "Settings";
   static const String workingHours = "Working Hours";
+  static const String iAmAvailable = "I’m Available";
 
   static const String termsAndCondition = "Terms & Condition";
   static const String privacyPolicy = "Privacy Policy";

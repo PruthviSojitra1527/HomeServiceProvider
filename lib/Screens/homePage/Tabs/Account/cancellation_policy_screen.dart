@@ -16,63 +16,66 @@ class _CancellationPolicyScreenState extends State<CancellationPolicyScreen> {
       bottom: false,
       child: Scaffold(
         backgroundColor: appColors.appLightColor,
-        body: Stack(
+        body: Column(
           children: [
-            SingleChildScrollView(
-              child: Padding(
-                padding:  EdgeInsets.all(scalingQuery.moderateScale(10)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: scalingQuery.scale(100),),
+            customGradientContainer(context: context,title: Strings.cancellationPolicy,leadingChild: customRoundBtn(
+              context: context,
+              height: ResponsiveFlutter.of(context).scale(35),
+              color: appColors.white,
+              image: ImagePath.blueBack,
+            ),),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding:  EdgeInsets.all(scalingQuery.moderateScale(10)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: scalingQuery.moderateScale(10)),
+                        child: Text(
+                          Strings.dummyTC_2,
+                          style: myText.regularText(
+                            size: scalingQuery.fontSize(2.3),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: scalingQuery.moderateScale(10)),
+                        child: Text(Strings.dummyPP_1,
+                            style: myText.semiBoldText(
+                              size: scalingQuery.fontSize(2.2),
+                            )),
+                      ),
 
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: scalingQuery.moderateScale(10)),
-                      child: Text(
-                        Strings.dummyTC_2,
-                        style: myText.regularText(
-                          size: scalingQuery.fontSize(2.3),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: scalingQuery.moderateScale(10)),
+                        child: Text(
+                          Strings.dummyTC_2,
+                          style: myText.regularText(
+                            size: scalingQuery.fontSize(2),
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: scalingQuery.moderateScale(10)),
-                      child: Text(Strings.dummyPP_1,
-                          style: myText.semiBoldText(
-                            size: scalingQuery.fontSize(2.2),
-                          )),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: scalingQuery.moderateScale(10)),
-                      child: Text(
-                        Strings.dummyTC_2,
-                        style: myText.regularText(
-                          size: scalingQuery.fontSize(2),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: scalingQuery.moderateScale(10)),
+                        child: Text(
+                          Strings.dummyTC_2,
+                          style: myText.regularText(
+                              size: scalingQuery.fontSize(2.2),
+                              color: appColors.darkBlueTextColor
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: scalingQuery.moderateScale(10)),
-                      child: Text(
-                        Strings.dummyTC_2,
-                        style: myText.regularText(
-                            size: scalingQuery.fontSize(2.2),
-                            color: appColors.darkBlueTextColor
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-            customAppBar(
-                context: context, title: Strings.termsConditionScreen),
-
           ],
         ),
       ),

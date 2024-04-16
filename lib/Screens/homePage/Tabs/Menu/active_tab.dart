@@ -8,8 +8,7 @@ class ActiveScreen extends StatefulWidget {
 }
 
 class _ActiveScreenState extends State<ActiveScreen> {
-  AppColors appColors = AppColors();
-  MyText myText = MyText();
+
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:home_service/Screens/homePage/Tabs/Account/bank_details.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/cancellation_policy_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/change_password_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/help_screen.dart';
-import 'package:home_service/Screens/homePage/Tabs/Account/notification_screen.dart';
+import 'package:home_service/Screens/homePage/Tabs/Account/notification_settings.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/privacy_policy_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/terms_and_condition_screen.dart';
 
@@ -110,8 +110,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 image: ImagePath.blueBack,
               ),
             ),
-            SizedBox(
-              height: scalingQuery.hp(60),
+            Expanded(
               child: ListView.separated(
                 shrinkWrap: true,
                 primary: false,
@@ -119,47 +118,46 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 padding: EdgeInsets.all(scalingQuery.moderateScale(3)),
                 itemCount: list.length,
                 itemBuilder: (context, index) {
-                  return customContainer(
-                    context: context,
-                    child: Padding(
-                      padding: list[index]['icon'] != null
-                          ? EdgeInsets.all(scalingQuery.scale(17))
-                          : EdgeInsets.symmetric(
-                              horizontal: scalingQuery.scale(17),
+                  return InkWell(
+                    onTap: list[index]['onTap'],
+                    splashColor: appColors.transparent,
+                    child: customContainer(
+                      context: context,
+                      child: Padding(
+                        padding: list[index]['icon'] != null
+                            ? EdgeInsets.all(scalingQuery.scale(17))
+                            : EdgeInsets.symmetric(
+                                horizontal: scalingQuery.scale(17),
+                              ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  list[index]['image'],
+                                  height: scalingQuery.scale(15),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          scalingQuery.moderateScale(10)),
+                                  child: Text(
+                                    list[index]['title'],
+                                    style: myText.regularText(
+                                        color: appColors.darkBlueTextColor),
+                                  ),
+                                ),
+                              ],
                             ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Image.asset(
-                                list[index]['image'],
-                                height: scalingQuery.scale(15),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: scalingQuery.moderateScale(10)),
-                                child: Text(
-                                  list[index]['title'],
-                                  style: myText.regularText(
-                                      color: appColors.darkBlueTextColor),
-                                ),
-                              ),
-                            ],
-                          ),
-                          list[index]['icon'] == null
-                              ? list[index]['child']
-                              : InkWell(
-                                  onTap: list[index]['onTap'],
-                                  child: Container(
-                                      alignment: Alignment.centerRight,
-                                      width: scalingQuery.scale(100),
-                                      child: Image.asset(
-                                        list[index]['icon'],
-                                        height: scalingQuery.scale(10),
-                                      )),
-                                ),
-                        ],
+                            list[index]['icon'] == null
+                                ? list[index]['child']
+                                : Image.asset(
+                                    list[index]['icon'],
+                                    height: scalingQuery.scale(10),
+                                  ),
+                          ],
+                        ),
                       ),
                     ),
                   );

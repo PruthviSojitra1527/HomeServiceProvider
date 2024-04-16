@@ -11,8 +11,6 @@ class MyServiceProviderDetails extends StatefulWidget {
 }
 
 class _ServiceState extends State<MyServiceProviderDetails> {
-  int listLength = 2;
-
   @override
   Widget build(BuildContext context) {
     ScalingQuery scalingQuery = ResponsiveFlutter.of(context);
@@ -203,15 +201,13 @@ class _ServiceState extends State<MyServiceProviderDetails> {
             Padding(
               padding: EdgeInsets.all(scalingQuery.moderateScale(10)),
               child: SizedBox(
-                height: scalingQuery.scale(540),
+                height: scalingQuery.hp(100) - scalingQuery.scale(200),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      reviewRatting(
-                        context: context,
-                      ),
+                      const ReviewRatingFunction(),
                       SizedBox(
                         height: scalingQuery.scale(10),
                       ),
@@ -274,50 +270,79 @@ class _ServiceState extends State<MyServiceProviderDetails> {
       ),
     );
   }
+}
 
-  reviewRatting({
-    required context,
-    scrolling = false,
-  }) {
+class ReviewRatingFunction extends StatefulWidget {
+  const ReviewRatingFunction({
+    super.key,
+    this.scrolling = false,
+    this.text = true,
+    this.length = 2,
+  });
+
+  final bool scrolling;
+  final bool text;
+  final int length;
+
+  @override
+  State<ReviewRatingFunction> createState() => _ReviewRatingFunctionState();
+}
+
+class _ReviewRatingFunctionState extends State<ReviewRatingFunction> {
+  int listLength = 2;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    listLength = widget.length;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                Strings.reviews,
-                style: myText.semiBoldText(
-                    color: appColors.transactionText,
-                    size: ResponsiveFlutter.of(context).fontSize(2.5)),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    listLength == 2
-                        ? listLength = dummyReviewList.length
-                        : listLength = 2;
-                  });
-                },
-                child: Text(
-                  listLength != 2 ? Strings.viewLess : Strings.viewAll,
-                  style: myText.regularText(
-                      isUnderline: true,
-                      color: appColors.darkBlueTextColor,
-                      size: ResponsiveFlutter.of(context).fontSize(1.7)),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: ResponsiveFlutter.of(context).scale(10),
-          ),
+          widget.text
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      Strings.reviews,
+                      style: myText.semiBoldText(
+                          color: appColors.transactionText,
+                          size: ResponsiveFlutter.of(context).fontSize(2.5)),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          listLength == 2
+                              ? listLength = dummyReviewList.length
+                              : listLength = 2;
+                        });
+                      },
+                      child: Text(
+                        listLength != 2 ? Strings.viewLess : Strings.viewAll,
+                        style: myText.regularText(
+                            isUnderline: true,
+                            color: appColors.darkBlueTextColor,
+                            size: ResponsiveFlutter.of(context).fontSize(1.7)),
+                      ),
+                    ),
+                  ],
+                )
+              : Container(),
+          widget.text
+              ? SizedBox(
+                  height: ResponsiveFlutter.of(context).scale(10),
+                )
+              : Container(),
           ListView.separated(
             padding:
                 EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(0)),
             shrinkWrap: true,
             primary: false,
-            physics: !scrolling
+            physics: !widget.scrolling
                 ? const NeverScrollableScrollPhysics()
                 : const AlwaysScrollableScrollPhysics(),
             itemCount: listLength,

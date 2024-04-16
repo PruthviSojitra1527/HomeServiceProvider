@@ -2,14 +2,11 @@ import '../../../../Common/all_import.dart';
 
 class CompletedScreen extends StatefulWidget {
   const CompletedScreen({super.key});
-
   @override
   State<CompletedScreen> createState() => _CompletedScreenState();
 }
 
 class _CompletedScreenState extends State<CompletedScreen> {
-  AppColors appColors = AppColors();
-  MyText myText = MyText();
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +23,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
                     context: context,
                     list: dummyBooking,
                     index: index,
+                    isCompletedScreen: true,
                   );
                 },
               )

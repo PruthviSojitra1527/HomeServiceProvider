@@ -1,4 +1,4 @@
-import 'package:home_service/Screens/homePage/Tabs/Account/change_password_screen.dart';
+import 'package:home_service/Screens/homePage/Tabs/Account/customer_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/edit_profile.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/privacy_policy_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/ratting_review.dart';
@@ -32,14 +32,13 @@ class _MyAccountState extends State<MyAccount> {
               context: context, widget: const NotificationScreen());
         },
       },
-
       {
         'image': ImagePath.tab_4,
         'title': Strings.customer,
         'icon': ImagePath.forwardArrow,
         'child': null,
         'onTap': () {
-          customNavigation(context: context, widget: const ChangePassword());
+          customNavigation(context: context, widget: const CustomerScreen());
         },
       },
       {
@@ -67,8 +66,7 @@ class _MyAccountState extends State<MyAccount> {
         'icon': ImagePath.forwardArrow,
         'child': null,
         'onTap': () {
-          customNavigation(
-              context: context, widget: const SettingsScreen());
+          customNavigation(context: context, widget: const SettingsScreen());
         },
       },
       {
@@ -174,8 +172,7 @@ class _MyAccountState extends State<MyAccount> {
                 ),
               ),
             ),
-            SizedBox(
-              height: scalingQuery.hp(60),
+            Expanded(
               child: ListView.separated(
                 shrinkWrap: true,
                 primary: false,
@@ -183,89 +180,90 @@ class _MyAccountState extends State<MyAccount> {
                 padding: EdgeInsets.all(scalingQuery.moderateScale(3)),
                 itemCount: list.length,
                 itemBuilder: (context, index) {
-                  return customContainer(
-                    context: context,
-                    child: Padding(
-                      padding: list[index]['icon'] != null
-                          ? EdgeInsets.all(scalingQuery.scale(17))
-                          : EdgeInsets.symmetric(
-                              horizontal: scalingQuery.scale(17),
+                  return InkWell(
+                    onTap: list[index]['onTap'],
+                    splashColor: appColors.transparent,
+                    child: customContainer(
+                      context: context,
+                      child: Padding(
+                        padding: list[index]['icon'] != null
+                            ? EdgeInsets.all(scalingQuery.scale(17))
+                            : EdgeInsets.symmetric(
+                                horizontal: scalingQuery.scale(17),
+                              ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  list[index]['image'],
+                                  height: scalingQuery.scale(15),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          scalingQuery.moderateScale(10)),
+                                  child: Text(
+                                    list[index]['title'],
+                                    style: myText.regularText(
+                                        color: appColors.darkBlueTextColor),
+                                  ),
+                                ),
+                              ],
                             ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Image.asset(
-                                list[index]['image'],
-                                height: scalingQuery.scale(15),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: scalingQuery.moderateScale(10)),
-                                child: Text(
-                                  list[index]['title'],
-                                  style: myText.regularText(
-                                      color: appColors.darkBlueTextColor),
-                                ),
-                              ),
-                            ],
-                          ),
-                          list[index]['icon'] == null
-                              ? list[index]['child']
-                              : InkWell(
-                                  onTap: list[index]['onTap'],
-                                  child: Container(
-                                      alignment: Alignment.centerRight,
-                                      width: scalingQuery.scale(100),
-                                      child: Image.asset(
-                                        list[index]['icon'],
-                                        height: scalingQuery.scale(10),
-                                      )),
-                                ),
-                        ],
+                            list[index]['icon'] == null
+                                ? list[index]['child']
+                                : Image.asset(
+                                    list[index]['icon'],
+                                    height: scalingQuery.scale(10),
+                                  ),
+                          ],
+                        ),
                       ),
                     ),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
                   return SizedBox(
-                    height: scalingQuery.scale(2),
+                    height: scalingQuery.scale(0),
                   );
                 },
               ),
             ),
-
-            InkWell(
-              onTap: () {},
-              child: SizedBox(
-                  width: scalingQuery.verticalScale(100),
-                  height: scalingQuery.verticalScale(40),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: appColors.red,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          ImagePath.logout,
-                          height: scalingQuery.scale(25),
-                        ),
-                        SizedBox(
-                          width: scalingQuery.scale(5),
-                        ),
-                        Text(
-                          Strings.logout,
-                          style: myText.boldText(
-                            color: appColors.white,
-                            size: scalingQuery.fontSize(2),
+            Padding(
+              padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
+              child: InkWell(
+                onTap: () {},
+                child: SizedBox(
+                    width: scalingQuery.verticalScale(100),
+                    height: scalingQuery.verticalScale(40),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: appColors.red,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            ImagePath.logout,
+                            height: scalingQuery.scale(25),
                           ),
-                        ),
-                      ],
-                    ),
-                  )),
+                          SizedBox(
+                            width: scalingQuery.scale(5),
+                          ),
+                          Text(
+                            Strings.logout,
+                            style: myText.boldText(
+                              color: appColors.white,
+                              size: scalingQuery.fontSize(2),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
             )
           ],
         ),

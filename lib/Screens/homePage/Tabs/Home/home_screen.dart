@@ -1,5 +1,9 @@
+import 'package:home_service/Screens/homePage/Tabs/Menu/task_done.dart';
+import 'package:home_service/Screens/homePage/Tabs/Notification/notification_screen.dart';
+
 import '../../../../Common/all_import.dart';
 import '../../../../Utils/custom_bar_chart.dart';
+import '../../../../Utils/custom_switch_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool switchValue = true;
   @override
   Widget build(BuildContext context) {
     ScalingQuery scalingQuery = ResponsiveFlutter.of(context);
@@ -27,23 +32,50 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 120,
                       title: Strings.dashboard,
                       trailingChild: Padding(
-                        padding:   EdgeInsets.all(scalingQuery.moderateScale(8)),
+                        padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
                         child: customRoundBtn(
                             context: context,
                             color: appColors.darkBlueTextColor,
                             image: ImagePath.whiteNotification,
                             padding: 12,
-                        height: scalingQuery.scale(40),
-                          onTap: (){}
-                        ),
+                            height: scalingQuery.scale(40),
+                            onTap: () {
+                              customNavigation(
+                                  context: context,
+                                  widget: const NotificationScreen());
+                            }),
                       )),
                   Align(
-                      heightFactor: 2,
-                      alignment: const FractionalOffset(0.5, 1.50),
-                      child: customContainer(
-                          context: context,
-                          width: scalingQuery.wp(90),
-                          height: scalingQuery.scale(50))),
+                    heightFactor: 2,
+                    alignment: const FractionalOffset(0.5, 1.50),
+                    child: customContainer(
+                        context: context,
+                        width: scalingQuery.wp(90),
+                        height: scalingQuery.scale(50),
+                        child: Padding(
+                          padding:
+                              EdgeInsets.all(scalingQuery.moderateScale(8)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                Strings.iAmAvailable,
+                                style: myText.semiBoldText(
+                                    color: appColors.darkBlueTextColor,
+                                    size: scalingQuery.fontSize(2)),
+                              ),
+                              CustomSwitch(
+                                value: switchValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    switchValue = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        )),
+                  ),
                 ],
               ),
               SizedBox(
@@ -228,7 +260,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                       color: appColors.green,
                                       image: ImagePath.checkMark,
                                       padding: 10,
-                                      onTap: (){},
+                                      onTap: () {
+                                        customNavigation(context: context, widget:  TaskDoneScreen(
+                                          title :dummyBooking[index]['serviceName']
+                                        ));
+                                      },
                                       height: scalingQuery.scale(35),
                                     ),
                                   ),
@@ -239,7 +275,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       context: context,
                                       color: appColors.red,
                                       image: ImagePath.cancelWhite,
-                                      padding: 11,onTap: (){},
+                                      padding: 11,
+                                      onTap: () {},
                                       height: scalingQuery.scale(35),
                                     ),
                                   ),

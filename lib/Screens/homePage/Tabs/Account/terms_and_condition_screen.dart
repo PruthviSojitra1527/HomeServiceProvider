@@ -16,42 +16,52 @@ class _TermsConditionScreenState extends State<TermsConditionScreen> {
       bottom: false,
       child: Scaffold(
         backgroundColor: appColors.appLightColor,
-        body: Stack(
+        body: Column(
           children: [
-            SingleChildScrollView(
-              child: Padding(
-                padding:  EdgeInsets.all(scalingQuery.moderateScale(10)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: scalingQuery.scale(100),),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: scalingQuery.moderateScale(10)),
-                      child: Text(Strings.dummyTC_1,
-                          style: myText.semiBoldText(
-                              size: scalingQuery.fontSize(2.5),
-                              color: appColors.darkBlueTextColor)),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: scalingQuery.moderateScale(10)),
-                      child: Text(
-                        Strings.dummyTC_2,
-                        style: myText.regularText(
-                          size: scalingQuery.fontSize(2.3),
+            customGradientContainer(
+              context: context,
+              title: Strings.termsConditionScreen,
+              leadingChild: customRoundBtn(
+                context: context,
+                height: ResponsiveFlutter.of(context).scale(35),
+                color: appColors.white,
+                image: ImagePath.blueBack,
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.all(scalingQuery.moderateScale(10)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: scalingQuery.moderateScale(10)),
+                        child: Text(Strings.dummyTC_1,
+                            style: myText.semiBoldText(
+                                size: scalingQuery.fontSize(2.5),
+                                color: appColors.darkBlueTextColor)),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: scalingQuery.moderateScale(10)),
+                        child: Text(
+                          Strings.dummyTC_2,
+                          style: myText.regularText(
+                            size: scalingQuery.fontSize(2.3),
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: scalingQuery.moderateScale(10)),
-                      child: Text(Strings.dummyTC_3,
-                          style: myText.semiBoldText(
-                              size: scalingQuery.fontSize(2.5),
-                              color: appColors.darkBlueTextColor)),
-                    ),
-                    customContainer(
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: scalingQuery.moderateScale(10)),
+                        child: Text(Strings.dummyTC_3,
+                            style: myText.semiBoldText(
+                                size: scalingQuery.fontSize(2.5),
+                                color: appColors.darkBlueTextColor)),
+                      ),
+                      customContainer(
                         context: context,
                         padding: 0,
                         gradient: AppTheme.primaryGradient,
@@ -61,40 +71,42 @@ class _TermsConditionScreenState extends State<TermsConditionScreen> {
                           itemCount: 5,
                           padding: EdgeInsets.all(scalingQuery.scale(0)),
                           itemBuilder: (context, index) {
-                          return Row(
-                            children: [
-                              Image.asset(ImagePath.gradientDesign,height: scalingQuery.scale(30),),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: scalingQuery.moderateScale(10)),
-                                child: Text(
-                                  Strings.dummyTC_4,
-                                  style: myText.regularText(
-                                    size: scalingQuery.fontSize(2),
+                            return Row(
+                              children: [
+                                Image.asset(
+                                  ImagePath.gradientDesign,
+                                  height: scalingQuery.scale(30),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: scalingQuery.moderateScale(10)),
+                                  child: Text(
+                                    Strings.dummyTC_4,
+                                    style: myText.regularText(
+                                      size: scalingQuery.fontSize(2),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          );
-                        },),
-                        ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: scalingQuery.moderateScale(10)),
-                      child: Text(
-                        Strings.dummyTC_2,
-                        style: myText.regularText(
-                          size: scalingQuery.fontSize(2.3),
+                              ],
+                            );
+                          },
                         ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: scalingQuery.moderateScale(10)),
+                        child: Text(
+                          Strings.dummyTC_2,
+                          style: myText.regularText(
+                            size: scalingQuery.fontSize(2.3),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-            customAppBar(
-                context: context, title: Strings.termsConditionScreen),
-
           ],
         ),
       ),

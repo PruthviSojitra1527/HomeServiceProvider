@@ -35,6 +35,7 @@ dependencies:
   fl_chart: ^0.67.0      #To create chart
   easy_stepper: ^0.8.3   #To create stepper
   dotted_border: ^2.0.0  #To give dashed border
+  syncfusion_flutter_signaturepad: ^22.2.8  #To take signature
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

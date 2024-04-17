@@ -121,13 +121,9 @@ class _ServiceState extends State<MyServiceProviderDetails> {
                           color: appColors.appLightColor,
                           image: ImagePath.more,
                           onTap: () {
-                            showModalBottomSheet<void>(
-                              context: context,
-                              shape:
-                                  Border.all(color: appColors.appMediumColor),
-                              backgroundColor: appColors.appLightColor,
-                              builder: (BuildContext context) {
-                                return customContainer(
+                            showCustomBottomSheet(
+                                context: context,
+                                child: customContainer(
                                     context: context,
                                     height: scalingQuery.scale(80),
                                     child: Padding(
@@ -187,9 +183,7 @@ class _ServiceState extends State<MyServiceProviderDetails> {
                                           )
                                         ],
                                       ),
-                                    ));
-                              },
-                            );
+                                    )));
                           },
                         ),
                       ],

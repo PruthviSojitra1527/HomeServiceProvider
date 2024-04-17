@@ -728,9 +728,10 @@ Widget customServiceCard({
       ));
 }
 
-Widget customUploadContainer({required context}) {
+Widget customUploadContainer({required context, double padding = 8}) {
   return Padding(
-    padding: EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(8)),
+    padding:
+        EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(padding)),
     child: DottedBorder(
       color: appColors.btnColor,
       strokeWidth: ResponsiveFlutter.of(context).scale(1.5),
@@ -772,5 +773,17 @@ Widget customUploadContainer({required context}) {
         ),
       ),
     ),
+  );
+}
+
+showCustomBottomSheet({required context,child}) {
+  ScalingQuery scalingQuery = ResponsiveFlutter.of(context);
+  return showModalBottomSheet<void>(
+    context: context,
+    shape: Border.all(color: appColors.appMediumColor),
+    backgroundColor: appColors.appLightColor,
+    builder: (BuildContext context) {
+      return child ?? Container();
+    },
   );
 }

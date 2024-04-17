@@ -17,6 +17,7 @@ class ImagePath {
   static const String greenCheck = "${icBase}ic_green_check.png";
   static const String cancel = "${icBase}ic_cancel.png";
   static const String cancelWhite = "${icBase}ic_cancel_white.png";
+  static const String cancelGrey = "${icBase}ic_cancel_grey.png";
 
   static const String gallery = "${icBase}ic_gallery.png";
   static const String yellowMassage = "${icBase}ic_white_notification.png";
@@ -30,6 +31,7 @@ class ImagePath {
   static const String noBooking = "${imgBase}img_no_booking.png";
   static const String noChat = "${imgBase}img_no_chat.png";
   static const String noNotification = "${imgBase}img_no_notification.png";
+  static const String signatureHint ="${imgBase}img_signature_hint.png";
 
   static const String tab_0 = "${icNBase}ic_menu.png";
   static const String tabAC_0 = "${icNBase}ic_menu_active.png";

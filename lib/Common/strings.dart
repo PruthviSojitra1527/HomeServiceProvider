@@ -133,6 +133,9 @@ class Strings {
   static const String settings = "Settings";
   static const String workingHours = "Working Hours";
   static const String iAmAvailable = "I’m Available";
+  static const String pictureBefore = "Picture before";
+  static const String uploadImage = "Upload image of Cleaning";
+  static const String pictureAfter = "Picture after";
 
   static const String termsAndCondition = "Terms & Condition";
   static const String privacyPolicy = "Privacy Policy";
@@ -168,6 +171,7 @@ class Strings {
   static const String bankDetails = "Bank Details";
   static const String cancellationPolicy = "Cancellation Policy";
   static const String addServices = "Add Services";
+  static const String signature = "Signature";
 
   ///dummy strings
   static const String dummy_1 = "150 Experts";

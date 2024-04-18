@@ -2,6 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:home_service/Screens/homePage/Tabs/Menu/booking_details.dart';
 import 'package:home_service/Screens/homePage/Tabs/MyService/edit_service.dart';
 import '../../../../Common/all_import.dart';
+import '../Screens/homePage/Tabs/Account/customer_details_screen.dart';
 
 AppColors appColors = AppColors();
 MyText myText = MyText();
@@ -187,19 +188,22 @@ Widget customBookingCard(
     required index,
     isCompletedScreen = false,
     isCanceledScreen = false,
-    child}) {
+    child,
+    isCustomerDetailScreen = false,
+    onTap}) {
   return InkWell(
-      onTap: () {
-        customNavigation(
-          context: context,
-          widget: BookingDetails(
-            list: list,
-            index: index,
-            isCompletedScreen: isCompletedScreen,
-            isCanceledScreen: isCanceledScreen,
-          ),
-        );
-      },
+      onTap: onTap ??
+          () {
+            customNavigation(
+              context: context,
+              widget: BookingDetails(
+                list: list,
+                index: index,
+                isCompletedScreen: isCompletedScreen,
+                isCanceledScreen: isCanceledScreen,
+              ),
+            );
+          },
       child: customContainer(
         context: context,
         child: Padding(
@@ -253,29 +257,6 @@ Widget customBookingCard(
                       ),
                     ],
                   ),
-                  // isCompletedScreen
-                  //     ? InkWell(
-                  //   onTap: () {
-                  //     customNavigation(
-                  //       context: context,
-                  //       widget: ReviewAndRatingScreen(
-                  //         list: list,
-                  //         index: index,
-                  //       ),
-                  //     );
-                  //   },
-                  //   child: Padding(
-                  //     padding: EdgeInsets.symmetric(
-                  //         horizontal: ResponsiveFlutter.of(context)
-                  //             .moderateScale(5)),
-                  //     child: Text(
-                  //       Strings.writeReview,
-                  //       style: myText.regularText(
-                  //           color: appColors.blueTextColor,
-                  //           isUnderline: true),
-                  //     ),
-                  //   ),
-                  // )
                   child ?? Container(),
                 ],
               ),
@@ -309,7 +290,25 @@ Widget customBookingCard(
                       ),
                     ],
                   ),
-                  Text(
+                  isCustomerDetailScreen ?Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal:
+                            ResponsiveFlutter.of(context).moderateScale(5)),
+                        child: Image.asset(
+                          ImagePath.location,
+                          height: ResponsiveFlutter.of(context).scale(15),
+                        ),
+                      ),
+                      Text(
+                        Strings.dummy_23,
+                        style: myText.semiBoldText(
+                            color: appColors.transactionText,
+                            size: ResponsiveFlutter.of(context).fontSize(1.5)),
+                      ),
+                    ],
+                  ): Text(
                     list[index]['rate'],
                     style: myText.semiBoldText(
                         color: appColors.darkBlueTextColor,
@@ -469,49 +468,6 @@ Widget customNoData({required context, required image, str1 = "", str2 = ""}) {
         style: myText.regularText(),
       ),
     ],
-  );
-}
-
-Widget customAppBar({required context, String title = "", double height = 85}) {
-  return Container(
-    height: ResponsiveFlutter.of(context).scale(height),
-    decoration: const BoxDecoration(
-      gradient: AppTheme.primaryGradient,
-    ),
-    child: Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: ResponsiveFlutter.of(context).moderateScale(20),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: ResponsiveFlutter.of(context).scale(17),
-          ),
-          Row(
-            children: [
-              customRoundBtn(
-                context: context,
-                height: ResponsiveFlutter.of(context).scale(35),
-                color: appColors.white,
-                image: ImagePath.blueBack,
-              ),
-              SizedBox(
-                width: ResponsiveFlutter.of(context).scale(17),
-              ),
-              Text(
-                title,
-                style: myText.semiBoldText(
-                  color: appColors.darkBlueTextColor,
-                  size: ResponsiveFlutter.of(context).fontSize(2.5),
-                ),
-              )
-            ],
-          ),
-        ],
-      ),
-    ),
   );
 }
 
@@ -776,14 +732,200 @@ Widget customUploadContainer({required context, double padding = 8}) {
   );
 }
 
-showCustomBottomSheet({required context,child}) {
-  ScalingQuery scalingQuery = ResponsiveFlutter.of(context);
+showCustomBottomSheet({required context, child}) {
   return showModalBottomSheet<void>(
     context: context,
+    constraints:
+        BoxConstraints(maxHeight: ResponsiveFlutter.of(context).hp(85)),
+    scrollControlDisabledMaxHeightRatio: ResponsiveFlutter.of(context).hp(85),
     shape: Border.all(color: appColors.appMediumColor),
-    backgroundColor: appColors.appLightColor,
+    backgroundColor: appColors.appMediumColor,
     builder: (BuildContext context) {
       return child ?? Container();
     },
+  );
+}
+
+customCheckButton({
+  required context,
+  bool isChecked = false,
+  activeColor,
+  color,
+}) {
+  return Container(
+    width: ResponsiveFlutter.of(context).scale(20),
+    height: ResponsiveFlutter.of(context).scale(20),
+    decoration: BoxDecoration(
+      color: isChecked ? activeColor : color,
+      borderRadius:
+          BorderRadius.circular(ResponsiveFlutter.of(context).scale(30) / 2),
+      border: Border.all(
+          color: isChecked ? activeColor : appColors.transactionText),
+    ),
+    child: isChecked
+        ? Padding(
+            padding:
+                EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(5)),
+            child: Image.asset(
+              ImagePath.checkMark,
+              height: ResponsiveFlutter.of(context).scale(15),
+            ),
+          )
+        : null,
+  );
+}
+
+Widget customWalletCard({
+  required context,
+  list,
+  index = 0,
+}) {
+  return customContainer(
+      context: context,
+      child: Padding(
+        padding:
+            EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(15)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal:
+                          ResponsiveFlutter.of(context).moderateScale(15)),
+                  child: Image.asset(
+                    list != null ? list[index]['imageUrl'] : ImagePath.cleaning,
+                    height: ResponsiveFlutter.of(context).scale(35),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      list != null ? list[index]['name'] : Strings.cleaning,
+                      style: myText.semiBoldText(
+                          color: appColors.darkBlueTextColor,
+                          size: ResponsiveFlutter.of(context).fontSize(2)),
+                    ),
+                    Text(
+                      list != null ? list[index]['time'] : "",
+                      style: myText.regularText(),
+                    )
+                  ],
+                ),
+              ],
+            ),
+            Text(
+              list != null ? list[index]['rate'] : "",
+              style: myText.boldText(
+                  color: appColors.btnColor,
+                  size: ResponsiveFlutter.of(context).fontSize(2.5)),
+            )
+          ],
+        ),
+      ));
+}
+
+Widget customCustomerCard({
+  required context,
+  list,
+  index = 0,
+}) {
+  return InkWell(
+    onTap: () {
+      customNavigation(context: context, widget: const CustomerDetailsScreen());
+    },
+    child: customContainer(
+        context: context,
+        child: Padding(
+          padding:
+              EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(15)),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: ResponsiveFlutter.of(context)
+                                .moderateScale(10)),
+                        child: customUserImage(
+                            context: context,
+                            image: list[index]['imageUrl'],
+                            height: ResponsiveFlutter.of(context).scale(50)),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            list != null
+                                ? list[index]['name']
+                                : Strings.dummy_5,
+                            style: myText.semiBoldText(
+                                color: appColors.darkBlueTextColor,
+                                size:
+                                    ResponsiveFlutter.of(context).fontSize(2)),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                list[index]['email'],
+                                style: myText.regularText(),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: ResponsiveFlutter.of(context).moderateScale(5)),
+                child: Divider(
+                  height: ResponsiveFlutter.of(context).scale(5),
+                  color: appColors.dividerColor.withOpacity(0.2),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal:
+                                ResponsiveFlutter.of(context).moderateScale(5)),
+                        child: Image.asset(
+                          ImagePath.callBlue,
+                          height: ResponsiveFlutter.of(context).scale(12),
+                        ),
+                      ),
+                      Text(
+                        list[index]['phone'],
+                        style: myText.regularText(
+                            color: appColors.darkBlueTextColor,
+                            size: ResponsiveFlutter.of(context).fontSize(1.5)),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    "See 25 of booking history",
+                    style: myText.regularText(
+                        color: appColors.red,
+                        isUnderline: true,
+                        size: ResponsiveFlutter.of(context).fontSize(1.5)),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        )),
   );
 }

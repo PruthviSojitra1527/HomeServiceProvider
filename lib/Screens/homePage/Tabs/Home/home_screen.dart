@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool switchValue = true;
+
   @override
   Widget build(BuildContext context) {
     ScalingQuery scalingQuery = ResponsiveFlutter.of(context);
@@ -112,12 +113,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 customContainer(
                                     context: context,
+                                    width: scalingQuery.scale(152),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
                                           vertical:
                                               scalingQuery.moderateScale(15),
-                                          horizontal:
-                                              scalingQuery.moderateScale(30)),
+                                           ),
                                       child: Column(
                                         children: [
                                           Text(
@@ -140,12 +141,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .withOpacity(0.3)),
                                 customContainer(
                                     context: context,
+                                    width: scalingQuery.scale(152),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
                                           vertical:
                                               scalingQuery.moderateScale(15),
-                                          horizontal:
-                                              scalingQuery.moderateScale(30)),
+                                          ),
                                       child: Column(
                                         children: [
                                           Text(
@@ -166,7 +167,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: appColors.greenOpacity
                                         .withOpacity(0.5)),
                               ],
-                            )
+                            ),
+
+
                           ],
                         ),
                       ),
@@ -261,9 +264,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                       image: ImagePath.checkMark,
                                       padding: 10,
                                       onTap: () {
-                                        customNavigation(context: context, widget:  TaskDoneScreen(
-                                          title :dummyBooking[index]['serviceName']
-                                        ));
+                                        customNavigation(
+                                            context: context,
+                                            widget: TaskDoneScreen(
+                                                title: dummyBooking[index]
+                                                    ['serviceName']));
                                       },
                                       height: scalingQuery.scale(35),
                                     ),
@@ -276,7 +281,183 @@ class _HomeScreenState extends State<HomeScreen> {
                                       color: appColors.red,
                                       image: ImagePath.cancelWhite,
                                       padding: 11,
-                                      onTap: () {},
+                                      onTap: () {
+                                        int selectedValue = 1;
+                                        showCustomBottomSheet(
+                                            context: context,
+                                            child: StatefulBuilder(
+                                              builder: (context, setState) {
+                                                return Padding(
+                                                  padding: EdgeInsets.all(
+                                                      scalingQuery.scale(12)),
+                                                  child: Stack(
+                                                    alignment:
+                                                        Alignment.bottomCenter,
+                                                    children: [
+                                                      Expanded(
+                                                        child:
+                                                            SingleChildScrollView(
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .end,
+                                                                children: [
+                                                                  customRoundBtn(
+                                                                    context:
+                                                                        context,
+                                                                    height: ResponsiveFlutter.of(
+                                                                            context)
+                                                                        .scale(
+                                                                            35),
+                                                                    color: appColors
+                                                                        .btnColor,
+                                                                    image: ImagePath
+                                                                        .cancelWhite,
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Text(
+                                                                Strings
+                                                                    .cancelOrder,
+                                                                style: myText
+                                                                    .boldText(
+                                                                  size: scalingQuery
+                                                                      .fontSize(
+                                                                          3),
+                                                                  color: appColors
+                                                                      .darkBlueTextColor,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                Strings
+                                                                    .cancelReasonText,
+                                                                style: myText
+                                                                    .boldText(
+                                                                  size: scalingQuery
+                                                                      .fontSize(
+                                                                          2),
+                                                                  color: appColors
+                                                                      .transactionText,
+                                                                ),
+                                                              ),
+                                                              SizedBox(
+                                                                height:
+                                                                    scalingQuery
+                                                                        .scale(
+                                                                            10),
+                                                              ),
+                                                              customBookingCard(
+                                                                context:
+                                                                    context,
+                                                                list:
+                                                                    dummyBooking,
+                                                                index: index,
+                                                                onTap: (){}
+
+                                                              ),
+                                                              SizedBox(
+                                                                height:
+                                                                    scalingQuery
+                                                                        .scale(
+                                                                            10),
+                                                              ),
+                                                              customContainer(
+                                                                context:
+                                                                    context,
+                                                                alignment:
+                                                                    Alignment
+                                                                        .topLeft,
+                                                                child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(
+                                                                          horizontal: scalingQuery.moderateScale(
+                                                                              8),
+                                                                          vertical:
+                                                                              scalingQuery.moderateScale(5)),
+                                                                      child:
+                                                                          Text(
+                                                                        Strings
+                                                                            .selectReason,
+                                                                        style: myText
+                                                                            .boldText(
+                                                                          size:
+                                                                              scalingQuery.fontSize(2.5),
+                                                                          color:
+                                                                              appColors.darkBlueTextColor,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    for (RadioOption option
+                                                                        in radioOptions)
+                                                                      Row(
+                                                                        children: [
+                                                                          Radio(
+                                                                            splashRadius:
+                                                                                scalingQuery.scale(10),
+                                                                            activeColor:
+                                                                                appColors.btnColor,
+                                                                            value:
+                                                                                option.value,
+                                                                            groupValue:
+                                                                                selectedValue,
+                                                                            onChanged: (value) =>
+                                                                                setState(() => selectedValue = value as int),
+                                                                          ),
+                                                                          Text(
+                                                                            option.label,
+                                                                            style: selectedValue == option.value
+                                                                                ? myText.semiBoldText(color: appColors.darkBlueTextColor, size: scalingQuery.fontSize(2))
+                                                                                : myText.regularText(color: appColors.darkBlueTextColor, size: scalingQuery.fontSize(2)),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              SizedBox(
+                                                                height:
+                                                                    scalingQuery
+                                                                        .scale(
+                                                                            60),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding: EdgeInsets.all(
+                                                            scalingQuery
+                                                                .moderateScale(
+                                                                    8)),
+                                                        child: commonButton(
+                                                          context: context,
+                                                          width: scalingQuery
+                                                              .wp(90),
+                                                          title: Strings.submit
+                                                              .toUpperCase(),
+                                                          onTap: (){
+                                                            Navigator.pop(context);
+                                                          }
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                            ));
+                                      },
                                       height: scalingQuery.scale(35),
                                     ),
                                   ),
@@ -293,3 +474,18 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+class RadioOption {
+  final int value;
+  final String label;
+
+  RadioOption({required this.value, required this.label});
+}
+
+List<RadioOption> radioOptions = [
+  RadioOption(value: 1, label: Strings.reason1),
+  RadioOption(value: 2, label: Strings.reason2),
+  RadioOption(value: 3, label: Strings.reason3),
+  RadioOption(value: 4, label: Strings.reason4),
+  RadioOption(value: 5, label: Strings.reason5),
+];

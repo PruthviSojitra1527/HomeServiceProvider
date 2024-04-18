@@ -29,7 +29,12 @@ class _HelpScreenState extends State<HelpScreen> {
               backgroundColor: appColors.appMediumColor,
               elevation: 0,
               leading: Container(),
-              flexibleSpace: customAppBar(context: context, title: Strings.help)),
+              flexibleSpace: customGradientContainer(context: context, title: Strings.help,leadingChild: customRoundBtn(
+                context: context,
+                height: ResponsiveFlutter.of(context).scale(35),
+                color: appColors.white,
+                image: ImagePath.blueBack,
+              ),)),
           body: Column(
             children: [
               TabBar(

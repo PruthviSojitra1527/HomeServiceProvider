@@ -1,13 +1,13 @@
 import '../../../../Common/all_import.dart';
 
-class CustomerScreen extends StatefulWidget {
-  const CustomerScreen({super.key});
+class CustomerDetailsScreen extends StatefulWidget {
+  const CustomerDetailsScreen({super.key});
 
   @override
-  State<CustomerScreen> createState() => _CustomerScreenState();
+  State<CustomerDetailsScreen> createState() => _CustomerDetailsScreenState();
 }
 
-class _CustomerScreenState extends State<CustomerScreen> {
+class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     ScalingQuery scalingQuery = ResponsiveFlutter.of(context);
@@ -44,12 +44,20 @@ class _CustomerScreenState extends State<CustomerScreen> {
                     primary: false,
                     physics: const AlwaysScrollableScrollPhysics(),
 
-                    itemCount: dummyCustomerList.length,
+                    itemCount: dummyBooking.length,
                     itemBuilder: (context, index) {
-                      return customCustomerCard(
+                      return customBookingCard(
                         context: context,
-                        list: dummyCustomerList,
+                        list: dummyBooking,
                         index: index,
+                        isCustomerDetailScreen:true,
+                        child: Text(
+                          dummyBooking[index]['rate'],
+                          style: myText.semiBoldText(
+                              color: appColors.btnColor,
+                              size: ResponsiveFlutter.of(context).fontSize(2.5)),
+
+                        ),
                       );
                     },
                   ),

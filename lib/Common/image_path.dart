@@ -64,6 +64,7 @@ class ImagePath {
   static const String whiteNotification = "${icBase}ic_white_notification.png";
   static const String editBlue = "${icBase}ic_edit_blue.png";
   static const String dlt = "${icBase}ic_dlt_red.png";
+  static const String callBlue = "${icBase}ic_call_blue.png";
 
   static const String cleaning = "${icBase}ic_cleaning.png";
   static const String homePainting = "${icBase}ic_homePainting.png";
@@ -71,6 +72,7 @@ class ImagePath {
   static const String cooking = "${icBase}ic_cooking.png";
   static const String carpetCleaning = "${icBase}ic_carpetCleaning.png";
   static const String washAndFold = "${icBase}ic_washAndFold.png";
+  static const String wallet = "${icBase}ic_wallet.png";
 
   static const String notification = tab_3;
   static const String changeLanguage = "${icBase}ic_change_language.png";

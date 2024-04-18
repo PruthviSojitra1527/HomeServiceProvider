@@ -367,3 +367,93 @@ Ipsum available, but the majority have suffered
 alteration in some form.'''
   },
 ];
+
+List<Map<String, dynamic>> dummyWalletList = [
+  {
+    'imageUrl': ImagePath.cleaning,
+    'name': Strings.cleaning,
+    'time': '08 jan,2022 | 19:30',
+    'rate': '\$22',
+  },
+  {
+    'imageUrl': ImagePath.wallet,
+    'name': Strings.withdraw,
+    'time': '08 jan,2022 | 19:30',
+    'rate': '\$22',
+  },
+  {
+    'imageUrl': ImagePath.cleaning,
+    'name': Strings.cleaning,
+    'time': '08 jan,2022 | 19:30',
+    'rate': '\$22',
+  },
+  {
+    'imageUrl': ImagePath.cleaning,
+    'name': Strings.cleaning,
+    'time': '08 jan,2022 | 19:30',
+    'rate': '\$22',
+  },
+  {
+    'imageUrl': ImagePath.cleaning,
+    'name': Strings.cleaning,
+    'time': '08 jan,2022 | 19:30',
+    'rate': '\$22',
+  },
+  {
+    'imageUrl': ImagePath.cleaning,
+    'name': Strings.cleaning,
+    'time': '08 jan,2022 | 19:30',
+    'rate': '\$22',
+  },
+];
+
+List<Map<String, dynamic>> dummyCustomerList = [
+  {
+    'imageUrl': ImagePath.dummyUser,
+    'name': 'Olin Secona',
+    'email': 'olinasecona@gmail.com',
+    'phone': '(480) 555-0103',
+  },
+  {
+    'imageUrl': ImagePath.dummyUser1,
+    'name': 'Arlene McCoy',
+    'email': 'arlenemccoy@gmail.com',
+    'phone': '(307) 555-0133',
+  },
+  {
+    'imageUrl': ImagePath.dummyUser2,
+    'name': 'Eleanor Pena',
+    'email': 'eleanorpena@gmail.com',
+    'phone': '(671) 555-0110',
+  },
+  {
+    'imageUrl': ImagePath.dummyUser3,
+    'name': 'Marvin McKinney',
+    'email': 'marvinmckinney@gmail.com',
+    'phone': '(319) 555-0115',
+  },
+  {
+    'imageUrl': ImagePath.dummyUser,
+    'name': 'Ronald Richards',
+    'email': 'ronaldrichards@gmail.com',
+    'phone': '(480) 555-0103',
+  },
+  {
+    'imageUrl': ImagePath.dummyUser2,
+    'name': 'Eleanor Pena',
+    'email': 'eleanorpena@gmail.com',
+    'phone': '(671) 555-0110',
+  },
+  {
+    'imageUrl': ImagePath.dummyUser3,
+    'name': 'Marvin McKinney',
+    'email': 'marvinmckinney@gmail.com',
+    'phone': '(319) 555-0115',
+  },
+  {
+    'imageUrl': ImagePath.dummyUser,
+    'name': 'Ronald Richards',
+    'email': 'ronaldrichards@gmail.com',
+    'phone': '(480) 555-0103',
+  },
+];

@@ -172,6 +172,10 @@ class Strings {
   static const String cancellationPolicy = "Cancellation Policy";
   static const String addServices = "Add Services";
   static const String signature = "Signature";
+  static const String cancelOrder = "Cancel Order?";
+  static const String withdraw = "Withdraw";
+  static const String yourBalance = "Your Balance";
+  static const String recentActivity = "Recent activity";
 
   ///dummy strings
   static const String dummy_1 = "150 Experts";
@@ -196,7 +200,8 @@ Saladin, United Kingdom.""";
   static const String dummy_19 = "ICC0000165";
   static const String dummy_20 = "ACCELPIX@ICICI";
   static const String dummy_21 = "3 year";
-
+  static const String dummy_22 = "\$2250.0";
+  static const String dummy_23 = "San Fransisco, USA";
   static const String dummyTC_3 = "Contrary to popular belief";
   static const String dummyTC_4 = "There are many variations of passages.";
   static const String dummyTC_1 =
@@ -214,4 +219,12 @@ care by Delisa""";
   static const String writeSubject = "Write your subjects";
   static const String writeHere = "Write here..";
   static const String searchExpert = "Search Experts...";
+  static const String cancelReasonText = """Why cancel your order? Describe your
+                    cancellation reason?""";
+  static const String selectReason = "Select Reason";
+  static const String reason1 = "Order placed by mistake";
+  static const String reason2 = "Order wrong item";
+  static const String reason3 = "Entered wrong address";
+  static const String reason4 = "Entered wrong payment info";
+  static const String reason5 = "Item will not arrive on time";
 }

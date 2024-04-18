@@ -34,19 +34,18 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
                   image: ImagePath.search,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
-                child: SizedBox(
-                  height: scalingQuery.hp(85),
-                  child: ListView.builder(
-                    padding: EdgeInsets.all(scalingQuery.moderateScale(0)),
-                    shrinkWrap: true,
-                    primary: false,
-                    physics: const AlwaysScrollableScrollPhysics(),
+              Expanded(
+                child: ListView.builder(
+                  padding: EdgeInsets.all(scalingQuery.moderateScale(0)),
+                  shrinkWrap: true,
+                  primary: false,
+                  physics: const AlwaysScrollableScrollPhysics(),
 
-                    itemCount: dummyBooking.length,
-                    itemBuilder: (context, index) {
-                      return customBookingCard(
+                  itemCount: dummyBooking.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding:  EdgeInsets.all(scalingQuery.moderateScale(8)),
+                      child: customBookingCard(
                         context: context,
                         list: dummyBooking,
                         index: index,
@@ -58,9 +57,9 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
                               size: ResponsiveFlutter.of(context).fontSize(2.5)),
 
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],

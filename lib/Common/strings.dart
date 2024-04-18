@@ -141,6 +141,27 @@ class Strings {
   static const String privacyPolicy = "Privacy Policy";
   static const String logout = "Logout";
 
+  ///days
+
+  static const String sunday = "Sunday";
+  static const String monday = "Monday";
+  static const String tuesday = "Tuesday";
+  static const String wednesday = "Wednesday";
+  static const String thursday = "Thursday";
+  static const String friday = "Friday";
+  static const String saturday = "Saturday";
+
+  ///time
+  static const String morning = "Morning";
+  static const String afternoon = "Afternoon";
+  static const String evening = "Evening";
+  static const String time1 = "8AM - 12PM";
+  static const String time2 = "12PM - 4PM";
+  static const String time3 = "4PM - 8PM";
+
+
+
+
   ///tab names ---->
   static const String active = "Active";
   static const String upcoming = "Upcoming";
@@ -202,6 +223,8 @@ Saladin, United Kingdom.""";
   static const String dummy_21 = "3 year";
   static const String dummy_22 = "\$2250.0";
   static const String dummy_23 = "San Fransisco, USA";
+  static const String dummy_24 = '1234567890';
+
   static const String dummyTC_3 = "Contrary to popular belief";
   static const String dummyTC_4 = "There are many variations of passages.";
   static const String dummyTC_1 =

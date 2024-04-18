@@ -121,14 +121,14 @@ class _BookingDetailsState extends State<BookingDetails> {
                             Row(
                               children: [
                                 Image.asset(
-                                  ImagePath.washAndFold,
+                                  widget.list[widget.index]['imageUrl'],
                                   height: scalingQuery.scale(40),
                                 ),
                                 SizedBox(
                                   width: scalingQuery.scale(10),
                                 ),
                                 Text(
-                                  Strings.washAndFold,
+                                  widget.list[widget.index]['serviceName'],
                                   style: myText.semiBoldText(
                                     color: appColors.darkBlueTextColor,
                                     size: scalingQuery.fontSize(2),
@@ -258,6 +258,12 @@ class _BookingDetailsState extends State<BookingDetails> {
                 context: context,
                 title: Strings.cancelBooking,
                 width: scalingQuery.wp(90),
+                onTap: (){
+                  showCustomBottomSheet(
+                    context: context,
+                    index: widget.index,
+                  );
+                }
               ),
             )
           ],

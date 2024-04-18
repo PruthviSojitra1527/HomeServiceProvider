@@ -65,6 +65,7 @@ class ImagePath {
   static const String editBlue = "${icBase}ic_edit_blue.png";
   static const String dlt = "${icBase}ic_dlt_red.png";
   static const String callBlue = "${icBase}ic_call_blue.png";
+  static const String radioCenter = "${icBase}ic_radio_center.png";
 
   static const String cleaning = "${icBase}ic_cleaning.png";
   static const String homePainting = "${icBase}ic_homePainting.png";

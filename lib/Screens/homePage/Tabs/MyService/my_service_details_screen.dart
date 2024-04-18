@@ -1,4 +1,5 @@
 import '../../../../Common/all_import.dart';
+import '../../../../Utils/my_work_gallery.dart';
 import 'edit_service.dart';
 
 class MyServiceProviderDetails extends StatefulWidget {
@@ -214,12 +215,19 @@ class _ServiceState extends State<MyServiceProviderDetails> {
                                 color: appColors.transactionText,
                                 size: scalingQuery.fontSize(2.5)),
                           ),
-                          Text(
-                            Strings.viewAll,
-                            style: myText.regularText(
-                                isUnderline: true,
-                                color: appColors.darkBlueTextColor,
-                                size: scalingQuery.fontSize(1.7)),
+                          TextButton(
+                            onPressed: () {
+                              customNavigation(
+                                  context: context,
+                                  widget: const MyWorkGallery());
+                            },
+                            child: Text(
+                              Strings.viewAll,
+                              style: myText.regularText(
+                                  isUnderline: true,
+                                  color: appColors.darkBlueTextColor,
+                                  size: scalingQuery.fontSize(1.7)),
+                            ),
                           ),
                         ],
                       ),

@@ -36,6 +36,7 @@ dependencies:
   easy_stepper: ^0.8.3   #To create stepper
   dotted_border: ^2.0.0  #To give dashed border
   syncfusion_flutter_signaturepad: ^22.2.8  #To take signature
+  url_launcher: ^6.2.6   # To make call
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

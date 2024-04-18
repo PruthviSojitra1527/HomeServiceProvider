@@ -4,6 +4,7 @@ import 'package:home_service/Screens/homePage/Tabs/Account/privacy_policy_screen
 import 'package:home_service/Screens/homePage/Tabs/Account/ratting_review.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/settings_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/wallet_screen.dart';
+import 'package:home_service/Screens/homePage/Tabs/Account/working_hours_screen.dart';
 import '../../../../Common/all_import.dart';
 import '../Notification/notification_screen.dart';
 
@@ -76,7 +77,7 @@ class _MyAccountState extends State<MyAccount> {
         'child': null,
         'onTap': () {
           customNavigation(
-              context: context, widget: const PrivacyPolicyScreen());
+              context: context, widget: const WorkingHoursScreen());
         },
       },
     ];

@@ -438,22 +438,26 @@ List<Map<String, dynamic>> dummyCustomerList = [
     'email': 'ronaldrichards@gmail.com',
     'phone': '(480) 555-0103',
   },
-  {
-    'imageUrl': ImagePath.dummyUser2,
-    'name': 'Eleanor Pena',
-    'email': 'eleanorpena@gmail.com',
-    'phone': '(671) 555-0110',
-  },
-  {
-    'imageUrl': ImagePath.dummyUser3,
-    'name': 'Marvin McKinney',
-    'email': 'marvinmckinney@gmail.com',
-    'phone': '(319) 555-0115',
-  },
-  {
-    'imageUrl': ImagePath.dummyUser,
-    'name': 'Ronald Richards',
-    'email': 'ronaldrichards@gmail.com',
-    'phone': '(480) 555-0103',
-  },
+];
+
+List<String> days = [
+  Strings.sunday,
+  Strings.monday,
+  Strings.tuesday,
+  Strings.wednesday,
+  Strings.thursday,
+  Strings.friday,
+  Strings.saturday,
+];
+
+List<String> subTime = [
+  Strings.morning,
+  Strings.afternoon,
+  Strings.evening,
+];
+
+List<String> time = [
+  Strings.time1,
+  Strings.time2,
+  Strings.time3,
 ];

@@ -34,25 +34,23 @@ class _CustomerScreenState extends State<CustomerScreen> {
                   image: ImagePath.search,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
-                child: SizedBox(
-                  height: scalingQuery.hp(85),
-                  child: ListView.builder(
-                    padding: EdgeInsets.all(scalingQuery.moderateScale(0)),
-                    shrinkWrap: true,
-                    primary: false,
-                    physics: const AlwaysScrollableScrollPhysics(),
-
-                    itemCount: dummyCustomerList.length,
-                    itemBuilder: (context, index) {
-                      return customCustomerCard(
+              Expanded(
+                child: ListView.builder(
+                  padding: EdgeInsets.all(scalingQuery.moderateScale(0)),
+                  shrinkWrap: true,
+                  primary: false,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemCount: dummyCustomerList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
+                      child: customCustomerCard(
                         context: context,
                         list: dummyCustomerList,
                         index: index,
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],

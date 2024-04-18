@@ -290,30 +290,33 @@ Widget customBookingCard(
                       ),
                     ],
                   ),
-                  isCustomerDetailScreen ?Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal:
-                            ResponsiveFlutter.of(context).moderateScale(5)),
-                        child: Image.asset(
-                          ImagePath.location,
-                          height: ResponsiveFlutter.of(context).scale(15),
+                  isCustomerDetailScreen
+                      ? Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: ResponsiveFlutter.of(context)
+                                      .moderateScale(5)),
+                              child: Image.asset(
+                                ImagePath.location,
+                                height: ResponsiveFlutter.of(context).scale(15),
+                              ),
+                            ),
+                            Text(
+                              Strings.dummy_23,
+                              style: myText.semiBoldText(
+                                  color: appColors.transactionText,
+                                  size: ResponsiveFlutter.of(context)
+                                      .fontSize(1.5)),
+                            ),
+                          ],
+                        )
+                      : Text(
+                          list[index]['rate'],
+                          style: myText.semiBoldText(
+                              color: appColors.darkBlueTextColor,
+                              size: ResponsiveFlutter.of(context).fontSize(2)),
                         ),
-                      ),
-                      Text(
-                        Strings.dummy_23,
-                        style: myText.semiBoldText(
-                            color: appColors.transactionText,
-                            size: ResponsiveFlutter.of(context).fontSize(1.5)),
-                      ),
-                    ],
-                  ): Text(
-                    list[index]['rate'],
-                    style: myText.semiBoldText(
-                        color: appColors.darkBlueTextColor,
-                        size: ResponsiveFlutter.of(context).fontSize(2)),
-                  ),
                 ],
               )
             ],
@@ -432,7 +435,9 @@ Widget customUserCard({
                   context: context,
                   color: appColors.green,
                   image: ImagePath.call,
-                  onTap: () {},
+                  onTap: () {
+                    launchURL();
+                  },
                   height: ResponsiveFlutter.of(context).scale(35),
                   padding: 10)
               : Container(),
@@ -732,7 +737,9 @@ Widget customUploadContainer({required context, double padding = 8}) {
   );
 }
 
-showCustomBottomSheet({required context, child}) {
+showCustomBottomSheet({required context, child, index = 0}) {
+  int selectedValue = 1;
+  ScalingQuery scalingQuery = ResponsiveFlutter.of(context);
   return showModalBottomSheet<void>(
     context: context,
     constraints:
@@ -741,17 +748,140 @@ showCustomBottomSheet({required context, child}) {
     shape: Border.all(color: appColors.appMediumColor),
     backgroundColor: appColors.appMediumColor,
     builder: (BuildContext context) {
-      return child ?? Container();
+      return child ??
+          StatefulBuilder(
+            builder: (context, setState) {
+              return Padding(
+                padding: EdgeInsets.all(scalingQuery.scale(12)),
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                customRoundBtn(
+                                  context: context,
+                                  height:
+                                      ResponsiveFlutter.of(context).scale(35),
+                                  color: appColors.btnColor,
+                                  image: ImagePath.cancelWhite,
+                                ),
+                              ],
+                            ),
+                            Text(
+                              Strings.cancelOrder,
+                              style: myText.boldText(
+                                size: scalingQuery.fontSize(3),
+                                color: appColors.darkBlueTextColor,
+                              ),
+                            ),
+                            Text(
+                              Strings.cancelReasonText,
+                              style: myText.boldText(
+                                size: scalingQuery.fontSize(2),
+                                color: appColors.transactionText,
+                              ),
+                            ),
+                            SizedBox(
+                              height: scalingQuery.scale(10),
+                            ),
+                            customBookingCard(
+                                context: context,
+                                list: dummyBooking,
+                                index: index,
+                                onTap: () {}),
+                            SizedBox(
+                              height: scalingQuery.scale(10),
+                            ),
+                            customContainer(
+                              context: context,
+                              alignment: Alignment.topLeft,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            scalingQuery.moderateScale(8),
+                                        vertical:
+                                            scalingQuery.moderateScale(5)),
+                                    child: Text(
+                                      Strings.selectReason,
+                                      style: myText.boldText(
+                                        size: scalingQuery.fontSize(2.5),
+                                        color: appColors.darkBlueTextColor,
+                                      ),
+                                    ),
+                                  ),
+                                  for (RadioOption option in radioOptions)
+                                    Row(
+                                      children: [
+                                        Radio(
+                                          splashRadius: scalingQuery.scale(10),
+                                          activeColor: appColors.btnColor,
+                                          value: option.value,
+                                          groupValue: selectedValue,
+                                          onChanged: (value) => setState(() =>
+                                              selectedValue = value as int),
+                                        ),
+                                        Text(
+                                          option.label,
+                                          style: selectedValue == option.value
+                                              ? myText.semiBoldText(
+                                                  color: appColors
+                                                      .darkBlueTextColor,
+                                                  size:
+                                                      scalingQuery.fontSize(2))
+                                              : myText.regularText(
+                                                  color: appColors
+                                                      .darkBlueTextColor,
+                                                  size:
+                                                      scalingQuery.fontSize(2)),
+                                        ),
+                                      ],
+                                    ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: scalingQuery.scale(60),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
+                      child: commonButton(
+                          context: context,
+                          width: scalingQuery.wp(90),
+                          title: Strings.submit.toUpperCase(),
+                          onTap: () {
+                            Navigator.pop(context);
+                          }),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
     },
   );
 }
 
-customCheckButton({
-  required context,
-  bool isChecked = false,
-  activeColor,
-  color,
-}) {
+customCheckButton(
+    {required context,
+    bool isChecked = false,
+    activeColor = AppTheme.darkSecondaryColor,
+    color,
+    isRadio = false,
+    borderColor}) {
   return Container(
     width: ResponsiveFlutter.of(context).scale(20),
     height: ResponsiveFlutter.of(context).scale(20),
@@ -760,14 +890,16 @@ customCheckButton({
       borderRadius:
           BorderRadius.circular(ResponsiveFlutter.of(context).scale(30) / 2),
       border: Border.all(
-          color: isChecked ? activeColor : appColors.transactionText),
+          color: isChecked
+              ? borderColor ?? activeColor
+              : appColors.transactionText),
     ),
     child: isChecked
         ? Padding(
             padding:
                 EdgeInsets.all(ResponsiveFlutter.of(context).moderateScale(5)),
             child: Image.asset(
-              ImagePath.checkMark,
+              isRadio ? ImagePath.radioCenter : ImagePath.checkMark,
               height: ResponsiveFlutter.of(context).scale(15),
             ),
           )
@@ -896,24 +1028,29 @@ Widget customCustomerCard({
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal:
-                                ResponsiveFlutter.of(context).moderateScale(5)),
-                        child: Image.asset(
-                          ImagePath.callBlue,
-                          height: ResponsiveFlutter.of(context).scale(12),
+                  InkWell(
+                    onTap: () {
+                      launchURL(number: list[index]['phone']);
+                    },
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal:
+                                  ResponsiveFlutter.of(context).moderateScale(5)),
+                          child: Image.asset(
+                            ImagePath.callBlue,
+                            height: ResponsiveFlutter.of(context).scale(12),
+                          ),
                         ),
-                      ),
-                      Text(
-                        list[index]['phone'],
-                        style: myText.regularText(
-                            color: appColors.darkBlueTextColor,
-                            size: ResponsiveFlutter.of(context).fontSize(1.5)),
-                      ),
-                    ],
+                        Text(
+                          list[index]['phone'],
+                          style: myText.regularText(
+                              color: appColors.darkBlueTextColor,
+                              size: ResponsiveFlutter.of(context).fontSize(1.5)),
+                        ),
+                      ],
+                    ),
                   ),
                   Text(
                     "See 25 of booking history",
@@ -929,3 +1066,18 @@ Widget customCustomerCard({
         )),
   );
 }
+
+class RadioOption {
+  final int value;
+  final String label;
+
+  RadioOption({required this.value, required this.label});
+}
+
+List<RadioOption> radioOptions = [
+  RadioOption(value: 1, label: Strings.reason1),
+  RadioOption(value: 2, label: Strings.reason2),
+  RadioOption(value: 3, label: Strings.reason3),
+  RadioOption(value: 4, label: Strings.reason4),
+  RadioOption(value: 5, label: Strings.reason5),
+];

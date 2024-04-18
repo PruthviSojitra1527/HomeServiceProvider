@@ -1,6 +1,5 @@
 import 'package:home_service/Screens/homePage/Tabs/Account/customer_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/edit_profile.dart';
-import 'package:home_service/Screens/homePage/Tabs/Account/privacy_policy_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/ratting_review.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/settings_screen.dart';
 import 'package:home_service/Screens/homePage/Tabs/Account/wallet_screen.dart';

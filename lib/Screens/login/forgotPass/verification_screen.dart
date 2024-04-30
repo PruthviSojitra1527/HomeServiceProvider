@@ -117,7 +117,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         context: context,
                         title: Strings.verify.toUpperCase(),
                         onTap: () {
-                          customNavigationReplacement(
+                          customNavigation(
                               context: context,
                               widget: const ResetPassScreen());
                         }),

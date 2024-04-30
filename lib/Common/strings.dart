@@ -46,6 +46,8 @@ class Strings {
   static const String resend = "Resend Code";
   static const String newPassword = "New Password";
   static const String setPassword = "Set Password";
+  static const String accountVerified = "Account Verified";
+  static const String tnqForSignUp = "Thanks for signing up with us";
 
   static const String firstName = "First Name";
   static const String lastName = "Last Name";

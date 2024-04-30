@@ -33,11 +33,6 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                 customGradientContainer(
                   context: context,
                   title: Strings.personalDetails,
-                  leadingChild: customRoundBtn(
-                    height: scalingQuery.scale(35),
-                    context: context,
-                    image: ImagePath.blueBack,
-                  ),
                 ),
                 customContainer(
                     context: context,

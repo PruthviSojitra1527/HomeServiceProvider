@@ -1,6 +1,7 @@
-import 'package:home_service/Screens/homePage/homepage_screen.dart';
 
 import '../../../../Common/all_import.dart';
+import '../../homePage/Tabs/Home/home_screen.dart';
+import '../personal_details_screen.dart';
 
 class ResetPassScreen extends StatefulWidget {
   const ResetPassScreen({super.key});
@@ -138,9 +139,20 @@ class _ResetPassScreenState extends State<ResetPassScreen> {
                               context: context,
                               title: Strings.setPassword.toUpperCase(),
                               onTap: () {
-                                customNavigationReplacement(
-                                    context: context, widget: const HomePage());
-                              }),
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  snackBarFunction(
+                                    color: appColors.greenOpacity,
+                                    content1: Strings.accountVerified,
+                                    content2: Strings.tnqForSignUp,
+                                    context: context,
+                                  ),
+                                );
+                                Navigator.of(context).popUntil((route) => route.isFirst);
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) => const HomeScreen(),
+                                  ),
+                                ); }),
                         ),
                       ],
                     ),

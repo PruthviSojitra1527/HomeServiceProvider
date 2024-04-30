@@ -1,4 +1,5 @@
 import '../../../../Common/all_import.dart';
+import '../../../../Utils/search_screen.dart';
 
 class CustomerDetailsScreen extends StatefulWidget {
   const CustomerDetailsScreen({super.key});
@@ -32,6 +33,13 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
                   height: ResponsiveFlutter.of(context).scale(35),
                   color: appColors.btnColor,
                   image: ImagePath.search,
+                  onTap: (){
+                    customNavigation(
+                        context: context,
+                        widget: const SearchScreen(
+                          hintText: Strings.service,
+                        ));
+                  }
                 ),
               ),
               Expanded(

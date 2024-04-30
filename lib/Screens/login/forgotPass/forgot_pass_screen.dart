@@ -119,7 +119,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                               context: context,
                               title: Strings.submit.toUpperCase(),
                               onTap: () {
-                                customNavigationReplacement(
+                                customNavigation(
                                     context: context,
                                     widget: const VerificationScreen());
                               }),

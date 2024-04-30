@@ -23,18 +23,25 @@ class _HelpScreenState extends State<HelpScreen> {
       top: false,
       bottom: false,
       child: DefaultTabController(
-        length:  _tabs.length,
+        length: _tabs.length,
         child: Scaffold(
+          backgroundColor: appColors.appMediumColor,
           appBar: AppBar(
-              backgroundColor: appColors.appMediumColor,
+              backgroundColor: appColors.transparent,
               elevation: 0,
-              leading: Container(),
-              flexibleSpace: customGradientContainer(context: context, title: Strings.help,leadingChild: customRoundBtn(
-                context: context,
-                height: ResponsiveFlutter.of(context).scale(35),
-                color: appColors.white,
-                image: ImagePath.blueBack,
-              ),)),
+              leading: Padding(
+                padding:  EdgeInsets.all(scalingQuery.moderateScale(8)),
+                child: customRoundBtn(
+                  context: context,
+                  height: ResponsiveFlutter.of(context).scale(35),
+                  color: appColors.white,
+                  image: ImagePath.blueBack,
+                ),
+              ),
+              flexibleSpace: customGradientContainer(
+                  context: context,
+                  title: Strings.help,
+                  leadingChild: Container())),
           body: Column(
             children: [
               TabBar(

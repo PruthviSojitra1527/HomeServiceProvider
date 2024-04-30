@@ -3,6 +3,7 @@ import 'package:home_service/Screens/homePage/Tabs/Menu/upcoming_tab.dart';
 import 'package:home_service/Screens/homePage/Tabs/Notification/notification_screen.dart';
 
 import '../../../../Common/all_import.dart';
+import '../../../../Utils/search_screen.dart';
 import 'canceled_tab.dart';
 import 'completed_tab.dart';
 
@@ -41,29 +42,36 @@ class _MenuScreenState extends State<MenuScreen> {
           ),
           actions: [
             Padding(
-              padding:  EdgeInsets.all(scalingQuery.moderateScale(8)),
+              padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
               child: customRoundBtn(
                 context: context,
                 color: appColors.darkBlueTextColor,
                 image: ImagePath.whiteNotification,
-                padding: 10,onTap: (){
-                  customNavigation(context: context, widget: const NotificationScreen());
-              },
+                padding: 10,
+                onTap: () {
+                  customNavigation(
+                      context: context, widget: const NotificationScreen());
+                },
                 height: scalingQuery.scale(35),
               ),
             ),
             Padding(
-              padding:  EdgeInsets.all(scalingQuery.moderateScale(8)),
-
+              padding: EdgeInsets.all(scalingQuery.moderateScale(8)),
               child: customRoundBtn(
                 context: context,
                 color: appColors.btnColor,
-                image: ImagePath.search,onTap: (){},
+                image: ImagePath.search,
+                onTap: () {
+                  customNavigation(
+                      context: context,
+                      widget: const SearchScreen(
+                        hintText: Strings.bookingDetails,
+                      ));
+                },
                 padding: 10,
                 height: scalingQuery.scale(35),
               ),
             ),
-
           ],
           flexibleSpace: Container(
             height: scalingQuery.scale(100),

@@ -67,13 +67,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.all(
-                          scalingQuery.moderateScale(25),
-                        ),
-                        child: Stack(
-                          children: [
-                            Container(
+                      Stack(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: scalingQuery.moderateScale(25),
+                            ),
+                            child: Container(
                               width: scalingQuery.scale(300),
                               height: scalingQuery.verticalScale(175),
                               decoration: BoxDecoration(
@@ -91,7 +91,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal:
-                                          scalingQuery.moderateScale(15),
+                                      scalingQuery.moderateScale(15),
                                       vertical: scalingQuery.moderateScale(10),
                                     ),
                                     child: SizedBox(
@@ -106,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal:
-                                          scalingQuery.moderateScale(15),
+                                      scalingQuery.moderateScale(15),
                                       vertical: scalingQuery.moderateScale(10),
                                     ),
                                     child: SizedBox(
@@ -122,7 +122,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal:
-                                          scalingQuery.moderateScale(15),
+                                      scalingQuery.moderateScale(15),
                                       vertical: scalingQuery.moderateScale(10),
                                     ),
                                     child: SizedBox(
@@ -138,7 +138,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Padding(
                                     padding: EdgeInsets.symmetric(
                                       horizontal:
-                                          scalingQuery.moderateScale(15),
+                                      scalingQuery.moderateScale(15),
                                       vertical: scalingQuery.moderateScale(10),
                                     ),
                                     child: SizedBox(
@@ -148,7 +148,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         color: appColors.white.withOpacity(0.5),
                                         context: context,
                                         hintText:
-                                            "${Strings.confirm} ${Strings.password}",
+                                        "${Strings.confirm} ${Strings.password}",
                                       ),
                                     ),
                                   ),
@@ -158,23 +158,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ],
                               ),
                             ),
-                            Align(
-                              heightFactor: 4,
-                              alignment: const FractionalOffset(0.5, 1.3),
-                              child: commonButton(
-                                  context: context,
-                                  title: Strings.signUp.toUpperCase(),
-                                  onTap: () {
-                                    customNavigationReplacement(
-                                        context: context,
-                                        widget: const PersonalDetailsScreen());
-                                  }),
-                            ),
-                          ],
-                        ),
+                          ),
+
+                          Align(
+                            heightFactor: 5,
+                            alignment: const FractionalOffset(0.5, 0.95),
+                            child: commonButton(
+                                context: context,
+                                title: Strings.signUp.toUpperCase(),
+                                onTap: () {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    snackBarFunction(
+                                      color: appColors.greenOpacity,
+                                      content1: Strings.accountVerified,
+                                      content2: Strings.tnqForSignUp,
+                                      context: context,
+                                    ),
+                                  );
+                                  customNavigationReplacement(
+                                      context: context,
+                                      widget: const PersonalDetailsScreen());
+                                }),
+                          ),
+                        ],
                       ),
                       SizedBox(
-                        height: scalingQuery.scale(10),
+                        height: scalingQuery.scale(12),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

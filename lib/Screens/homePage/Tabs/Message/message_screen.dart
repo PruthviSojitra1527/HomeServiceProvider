@@ -1,4 +1,5 @@
 import '../../../../Common/all_import.dart';
+import '../../../../Utils/search_screen.dart';
 import 'chat_page.dart';
 
 class MsgScreen extends StatefulWidget {
@@ -25,7 +26,13 @@ class _MsgScreenState extends State<MsgScreen> {
                       height: scalingQuery.scale(35),
                       color: appColors.btnColor,
                       image: ImagePath.search,
-                      onTap: () {}),
+                      onTap: () {
+                        customNavigation(
+                            context: context,
+                            widget: const SearchScreen(
+                              hintText: Strings.chat,
+                            ));
+                      }),
                 ),
                 Expanded(
                   child: Container(
